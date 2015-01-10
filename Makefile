@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -lncurses
 SOURCES = main.cpp
 
 OBJS = $(SOURCES:.cpp=.o)
