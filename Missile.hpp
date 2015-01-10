@@ -19,7 +19,6 @@ class Missile : public AGameEntity
 
 		int					getX( void ) const;
 		int					getY( void ) const;
-		Pattern				getParttern( void ) const;
 		Pattern	&			getPattern( void ) const;
 		ACharacter &		getOwner( void ) const;
 

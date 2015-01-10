@@ -8,10 +8,9 @@ AGameEntity::AGameEntity(int x, int y, int wdth, int hgth, int speed, int maxspe
 	return ;
 }
 
-AGameEntity::AGameEntity(AGameEntity const & src)
+AGameEntity::AGameEntity(AGameEntity const & src) :
+	_pos(Position(src._pos)), _hb(Hitbox(src._hb)), _sp(src._sp), _speed(src._speed), _maxspeed(src._maxspeed), _dead(false), _index(AGameEntity::_nb_inst++)
 {
-	*this = src;
-	this->_index = AGameEntity::_nb_inst++;
 	std::cout << "[CONSTRUCT] Game Entity" << std::endl;
 	return ;
 }
@@ -58,18 +57,13 @@ std::string				AGameEntity::toString(void) const
 	std::stringstream	ostr;
 
 	ostr << "Game Entity (" << this->_index << ") has position : " << this->_pos
-		<< ", hitbox : " << this->_hp << ", sprite : " << this->_sp
+		<< ", hitbox : " << this->_hb << ", sprite : " << this->_sp
 		<< ", dead : " << this->_dead << ", speed : " << this->_speed
 		<< ", speedmax " << this->_maxspeed << "." << std::endl;
 	return ostr.str();
 }
 
-AGameEntity::AGameEntity( void )
-{
-	return ;
-}
-
-std::ostream			operator<<(std::ostream & o, AGameEntity const & rhs)
+std::ostream &			operator<<(std::ostream & o, AGameEntity const & rhs)
 {
 	o << rhs.toString();
 	return o;

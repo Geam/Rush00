@@ -1,7 +1,7 @@
 
 #include "Missile.hpp"
 
-Missile::Missile(int x, int y, std::string pattern, ACharacter const & owner) :	_x(x), _y(y), _pattern(Pattern(pattern)), _owner(owner)
+Missile::Missile(int x, int y, std::string pattern, ACharacter const & owner) : _x(x), _y(y), _pattern(Pattern(pattern)), _owner(owner)
 {
 	return ;
 }
