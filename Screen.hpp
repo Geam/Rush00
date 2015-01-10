@@ -16,11 +16,13 @@ class Screen
 
 		int			getX(void) const;
 		int			getY(void) const;
+
 	private:
-		Screen( void );
 		int			_x;
 		int			_y;
 
+		Screen( void );
+		int			_init();
 };
 
 #endif /* SCREEN_HPP */
