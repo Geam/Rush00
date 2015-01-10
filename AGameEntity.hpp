@@ -5,7 +5,8 @@
 #include "Hitbox.hpp"
 #include "Sprite.hpp"
 #include <iostream>
-#include <ssstream>
+#include <sstream>
+
 class AGameEntity
 {
 	public:
@@ -33,10 +34,10 @@ class AGameEntity
 		int						_speed;
 		int						_maxspeed;
 		int						_index;
+		AGameEntity( void );
 
 	private:
 		static unsigned int		_nb_inst;
-		AGameEntity( void );
 };
 
 std::ostream &					operator<<(std::ostream & o, AGameEntity const & rhs);

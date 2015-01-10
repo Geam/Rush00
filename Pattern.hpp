@@ -15,6 +15,7 @@ class Pattern
 		std::string	toString() const;
 
 		e_direction	next();
+		std::string		getPattern( void ) const;
 
 	private:
 		std::string	_pattern;
