@@ -46,7 +46,3 @@ ACharacter &	Missile::getOwner( void ) const
 {
 	return (this->_owner);
 }
-
-Missile::Missile( void ) : 	_x(0), _y(0), _pattern(Pattern("x")), _owner(getOwner())
-{
-}
