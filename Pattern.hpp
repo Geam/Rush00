@@ -1,10 +1,12 @@
 #ifndef PATTERN_HPP
 # define PATTERN_HPP
 
-#include <iostream>
-#include <string>
-#include <sstream>
+# include <iostream>
+# include <string>
+# include <sstream>
+
 enum	e_direction { NONE = 0, UP = 1, DOWN = 2, LEFT = 3, RIGHT = 4};
+
 class Pattern
 {
 	public:

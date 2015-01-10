@@ -9,24 +9,20 @@
 class Missile : public AGameEntity
 {
 	public:
-							Missile(int x, int y, std::string pattern, ACharacter const & owner);
-							Missile(Missile const & src);
-							~Missile( void );
-		Missile &			operator=(Missile const & rhs);
+								Missile(Position & pos, Hitbox hb, Sprite sp, Pattern pattern, ACharacter const & owner, int speed);
+								Missile(Missile const & src);
+								~Missile( void );
+		Missile &				operator=(Missile const & rhs);
 
-		virtual void		refresh(void);
-		virtual void		destroy(void);
+		virtual void			refresh(void);
+		virtual void			destroy(void);
 
-		int					getX( void ) const;
-		int					getY( void ) const;
-		Pattern	&			getPattern( void ) const;
-		ACharacter &		getOwner( void ) const;
+		Pattern	&				getPattern( void ) const;
+		ACharacter const &		getOwner( void ) const;
 
 	protected:
-		int					_x;
-		int					_y;
-		Pattern &			_pattern;
-		ACharacter &		_owner;
+		Pattern &				_pattern;
+		ACharacter const &		_owner;
 
 	private:
 		Missile( void );
