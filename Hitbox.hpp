@@ -1,5 +1,6 @@
 #ifndef HITBOX_HPP
 # define HITBOX_HPP
+# include <iostream>
 
 class Hitbox
 {
@@ -11,11 +12,14 @@ class Hitbox
 
 		int			getWidth() const;
 		int			getHeight() const;
+		std::string	toString(void) const;
 
 	private:
 		int			_wth;
 		int			_hei;
 		Hitbox( void );
 };
+
+std::ostream &	operator<<(std::ostream & o, Hitbox const & rhs);
 
 #endif /* HITBOX_HPP */
