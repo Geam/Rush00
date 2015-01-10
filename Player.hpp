@@ -1,7 +1,10 @@
 #ifndef PLAYER_HPP
 # define PLAYER_HPP
 
-class Player
+#include "ACharacter.hpp"
+#include "InputControler.hpp"
+
+class Player : public ACharacter
 {
 	public:
 		Player(Player const & src);
@@ -11,8 +14,10 @@ class Player
 		virtual void	destroy(void);
 		virtual void	refresh(void);
 
+		InputControler	getInputControler(void);
+
 	private:
-		InputController	_controller;
+		InputControler	_controler;
 		Player(void);
 };
 
