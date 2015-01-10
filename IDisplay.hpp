@@ -7,9 +7,9 @@ class IDisplay
 		IDisplay( void );
 		IDisplay(IDisplay const & src);
 		virtual ~IDisplay( void );
-		virtual IDisplay &	operator=(IDisplay const & rhs);
+		virtual IDisplay &	operator=(IDisplay const & rhs)=0;
 
-		virtual	void		display(void);
+		virtual	void		display(void)=0;
 };
 
 #endif /* IDISPLAY_HPP */
