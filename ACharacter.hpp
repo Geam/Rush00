@@ -18,6 +18,7 @@ class ACharacter : public AGameEntity
 		int				_maxfrate;
 		int				_speed;
 		int				_maxspeed;
+
 	private:
 		ACharacter( void );
 };

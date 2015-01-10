@@ -11,6 +11,7 @@ class Pattern
 		Pattern &	operator=(Pattern const & rhs);
 
 		e_direction	next();
+		std::string		getPattern( void ) const;
 
 	private:
 		std::string	_pattern;
