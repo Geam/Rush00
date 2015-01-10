@@ -1,5 +1,6 @@
 #ifndef SPRITE_HPP
 # define SPRITE_HPP
+# include <iostream>
 
 class Sprite
 {
@@ -13,7 +14,7 @@ class Sprite
 
 	private:
 		Sprite( void );
-		std::string		sprite[];
+		std::string		_sprite[];
 };
 
 #endif /* SPRITE_HPP */
