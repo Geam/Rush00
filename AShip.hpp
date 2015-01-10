@@ -19,8 +19,6 @@ class AShip
 		unsigned int	_armor;
 		AWeapon	*		_wep;
 //		Appearance *	_sprite sprite
-		int				_x;
-		int				_y;
 
 };
 

@@ -2,7 +2,9 @@
 #include <iostream>
 #include "Screen.hpp"
 
-Screen::Screen( void ) : _x(600), _y(400) {
+Screen::Screen( void ) {}
+
+Screen::Screen(int x, int y) : _x(x), _y(y) {
 	initscr();
 	start_color();
 	init_pair(1,COLOR_BLUE, COLOR_BLACK);
@@ -14,7 +16,7 @@ Screen::Screen( void ) : _x(600), _y(400) {
 	keypad(stdscr,true); // Read arrow keys (enables the "keypad" where they live)
 }
 
-Screen::Screen(Screen const & src) : _x(src._x), _y(xrc._y)
+Screen::Screen(Screen const & src) : _x(src._x), _y(src._y)
 {
 	initscr();
 	start_color();
@@ -31,9 +33,17 @@ Screen::~Screen( void ) {
 	endwin();
 }
 
+int			Screen::getX(void) const {
+	return this->_x;
+}
+
+int			Screen::getY(void) const {
+	return this->_y;
+}
+
 Screen &	Screen::operator=(Screen const & src){
-	this->_x = src._x;
-	this->_y = src._y;
+	this->_x = src.getX();
+	this->_y = src.getY();
 	return *this;
 }
 
