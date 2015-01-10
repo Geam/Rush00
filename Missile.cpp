@@ -6,7 +6,7 @@ Missile::Missile(int x, int y, std::string pattern, ACharacter const & owner) : 
 	return ;
 }
 
-Missile::Missile(Missile const & src) : _x(src.getX()), _y(src.getY()), _pattern(src.getPattern().getPattern()), _owner(src.getOwner())
+Missile::Missile(Missile const & src) : _x(src.getX()), _y(src.getY()), _pattern(src.getPattern()), _owner(src.getOwner())
 {
 	return ;
 }
