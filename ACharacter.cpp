@@ -30,7 +30,7 @@ ACharacter &	ACharacter::operator=(ACharacter const & rhs)
 
 Missile	const&	ACharacter::fireMissile(std::string pattern)
 {
-	return Missile(this->_pos.getX(),this->_pos.getY(), pattern, *this);
+	return Missile(Position(this->, pattern, *this);
 }
 
 int				ACharacter::getFireRate() const
