@@ -1,6 +1,11 @@
 #ifndef AGAMEENTITY_HPP
 # define AGAMEENTITY_HPP
 
+# include <iostream>
+# include "Position.hpp"
+# include "Hitbox.hpp"
+# include "Sprite.hpp"
+
 class AGameEntity
 {
 	public:
@@ -28,7 +33,6 @@ class AGameEntity
 		int						_speed;
 		int						_maxspeed;
 
-	private:
 		AGameEntity( void );
 };
 

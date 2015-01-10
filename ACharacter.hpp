@@ -14,12 +14,11 @@ class ACharacter : public AGameEntity
 		int				getSpeed() const;
 
 	protected:
+		ACharacter( void );
 		int				_frate;
 		int				_maxfrate;
 		int				_speed;
 		int				_maxspeed;
-	private:
-		ACharacter( void );
 };
 
 #endif /* ACHARACTER_HPP */
