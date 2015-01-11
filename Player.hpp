@@ -15,10 +15,8 @@ class Player : public ACharacter
 		virtual void				refresh(void);
 		virtual void				fireMissile(std::string pattern);
 
-		InputController &			getInputController(void) const;
-
 	private:
-		InputController				_controler;
+		InputController				_controller;
 		void						_getInput();
 };
 

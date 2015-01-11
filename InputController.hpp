@@ -9,11 +9,7 @@ class InputController
 		~InputController( void );
 		InputController &	operator=(InputController const & rhs);
 
-		void				readInput(void);
-		int					getInput(void);
-
-	private:
-		int					_input;
+		static int			getInput(void);
 };
 
 #endif /* INPUTCONTROLLER_HPP */

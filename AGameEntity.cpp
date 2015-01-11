@@ -9,6 +9,12 @@ AGameEntity::AGameEntity(int x, int y, int speed) : _speed(0), _maxspeed(speed),
 	return ;
 }
 
+AGameEntity::AGameEntity(void) : _speed(0), _maxspeed(0), _dead(true)
+{
+	std::cout << "[CONSTRUCT] Game Entity" << std::endl;
+	return ;
+}
+
 AGameEntity::AGameEntity(AGameEntity const & src) : _index(AGameEntity::_nb_inst++)
 {
 	std::cout << "[CONSTRUCT] Game Entity" << std::endl;
@@ -121,5 +127,5 @@ std::ostream &			operator<<(std::ostream & o, AGameEntity const & rhs)
 	return o;
 }
 
-unsigned int	_nb_inst = 0;
-AGameEntity		*_head = NULL;
+unsigned int	AGameEntity::_nb_inst = 0;
+AGameEntity		*AGameEntity::_head = NULL;

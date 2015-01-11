@@ -83,8 +83,7 @@ void				Game::_isOver()
 
 void				Game::_getInput()
 {
-	this->_player.getInputController().readInput();
-	if (this->_player.getInputController().getInput() == 0)
+	if (InputController::getInput() == 0)
 		this->_isQuit();
 }
 
