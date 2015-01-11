@@ -5,7 +5,7 @@
 ACharacter::ACharacter(int frate, int maxfrate, int speed, int maxspeed) : AGameEntity(....), _frate(frate), _maxfrate(maxfrate), _speed(speed), _maxspeed(speed)
 {
 	std::cout << "[CONSTRUCTED] ACharacter" << std::endl;
-	return;	
+	return;
 }
 
 ACharacter::ACharacter(ACharacter const & src) : AGameEntity(src)
