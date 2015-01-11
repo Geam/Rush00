@@ -12,6 +12,8 @@ InputController::~InputController( void )
 
 InputController &	InputController::operator=(InputController const & rhs)
 {
+	(void)rhs;
+	return *this;
 }
 
 void				InputController::readInput(char ch)
@@ -32,7 +34,7 @@ int					InputController::getInput(void)
 	return this->_input;
 }
 
-InputController::InputController( void )
+InputController::InputController( void ) : _input(-1)
 {
 }
 

@@ -4,6 +4,7 @@
 class InputController
 {
 	public:
+		InputController( void );
 		InputController(InputController const & src);
 		~InputController( void );
 		InputController &	operator=(InputController const & rhs);
@@ -12,7 +13,6 @@ class InputController
 		int					getInput(void);
 
 	private:
-		InputController( void );
 		int					_input;
 };
 

@@ -12,7 +12,9 @@ class Hitbox
 		Hitbox &	operator=(Hitbox const & rhs);
 
 		int			getWidth() const;
+		void		setWidth(int w);
 		int			getHeight() const;
+		void		setHeight(int h);
 		std::string	toString(void) const;
 
 	private:

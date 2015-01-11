@@ -17,6 +17,8 @@ class MoveController
 
 		void				move();
 
+		MoveController( void );
+
 	private:
 		Position *			_position;
 		Pattern *			_pattern;
@@ -25,7 +27,6 @@ class MoveController
 		void				moveUp();
 		void				moveDown();
 		void				moveNothing();
-		MoveController( void );
 
 };
 

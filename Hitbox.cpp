@@ -24,9 +24,21 @@ int				Hitbox::getWidth() const
 	return this->_wth;
 }
 
+void			Hitbox::setWidth(int w)
+{
+	this->_wth = w;
+	return ;
+}
+
 int				Hitbox::getHeight() const
 {
 	return this->_hei;
+}
+
+void			Hitbox::setHeight(int h)
+{
+	this->_hei = h;
+	return ;
 }
 
 std::string		Hitbox::toString(void) const {

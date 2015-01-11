@@ -36,8 +36,16 @@ e_direction	Pattern::next()
 	return drt;
 }
 
-Pattern::Pattern( void )
+void				Pattern::set(std::string pattern)
 {
+	this->_last = pattern.length();
+	this->_current = 0;
+	this->_pattern = pattern;
+}
+
+Pattern::Pattern( void ) : _pattern(""), _current(0), _last(0)
+{
+
 }
 
 std::string			Pattern::toString() const

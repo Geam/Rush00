@@ -28,7 +28,7 @@ void			CollisionChecker::checkCollision(AGameEntity & alist)
 	AGameEntity *current = &alist;
 	if (!current || current->getNext() == NULL)
 		return ;
-	while (current = current->getNext())
+	while ((current = current->getNext()))
 	{
 		CollisionChecker::checkCollision(alist, *(current->getNext()));
 	}
@@ -43,11 +43,13 @@ CollisionChecker::CollisionChecker( void )
 
 CollisionChecker::CollisionChecker(CollisionChecker const & src)
 {
+	*this = src;
 	return ;
 }
 
 CollisionChecker &	CollisionChecker::operator=(CollisionChecker const & rhs)
 {
+	(void)rhs;
 	return *this;
 }
 
