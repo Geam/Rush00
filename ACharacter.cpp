@@ -1,8 +1,7 @@
 #include <iostream>
 #include "ACharacter.hpp"
 
-
-ACharacter::ACharacter(int frate, int maxfrate, int speed, int maxspeed) : AGameEntity(....), _frate(frate), _maxfrate(maxfrate), _speed(speed), _maxspeed(speed)
+ACharacter::ACharacter(int x, int y, int wdth, int hght, Sprite const & sprt, int frate, int speed) : AGameEntity(x, y, wdth, hght, speed, sprt), _frate(frate), _maxfrate(frate)
 {
 	std::cout << "[CONSTRUCTED] ACharacter" << std::endl;
 	return;

@@ -10,7 +10,7 @@
 class AGameEntity
 {
 	public:
-		AGameEntity(int x, int y, int wdth, int hght, int speed, int maxspeed, Sprite const & sprite);
+		AGameEntity(int x, int y, int wdth, int hght, int speed, Sprite const & sprite);
 		AGameEntity(AGameEntity const & src);
 		virtual ~AGameEntity( void );
 

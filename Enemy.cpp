@@ -1,10 +1,9 @@
 #include <iostream>
 #include "Enemy.hpp"
 
-Enemy::Enemy(int x, int y, std::string pattern) : ACharacter(3, 5, 1, 2)
+Enemy::Enemy(int x, int y, std::string pattern, Sprite const & sprt) : ACharacter(x, y, 3, 5, sprt, 1, 2)
 {
 	std::cout << "[CONSTRUCT] Enemy" << std::endl;
-	this->_pos.update(x, y);
 	this->_pattern = Pattern(pattern);
 	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
 	return;

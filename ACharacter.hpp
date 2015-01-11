@@ -6,7 +6,7 @@
 class ACharacter : public AGameEntity
 {
 	public:
-		ACharacter(int frate, int maxfrate, int speed, int maxspeed);
+		ACharacter(int x, int y, int wdth, int hght, Sprite const & Sprite, int frate, int speed);
 		ACharacter(ACharacter const & src);
 		virtual ~ACharacter( void );
 		ACharacter &	operator=(ACharacter const & rhs);
