@@ -6,6 +6,8 @@
 bool    DisplaySprite::_VERBOSE = false;
 int     DisplaySprite::_instanceNb = 0;
 
+// TODO: pour l'instant les sprites sont simulés avec une struct ! Ne pas oublier de remplacer les variables temporaires.
+
 // constructor and destructor
 DisplaySprite::DisplaySprite(void) {
     if (DisplaySprite::_VERBOSE) {
