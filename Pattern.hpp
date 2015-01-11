@@ -4,6 +4,7 @@
 # include <iostream>
 # include <string>
 # include <sstream>
+# include "Console.hpp"
 
 enum	e_direction { NONE = 0, UP = 1, DOWN = 2, LEFT = 3, RIGHT = 4};
 

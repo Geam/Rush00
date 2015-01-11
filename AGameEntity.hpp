@@ -1,6 +1,7 @@
 #ifndef AGAMEENTITY_HPP
 # define AGAMEENTITY_HPP
 
+#include "Console.hpp"
 #include "Position.hpp"
 #include "Hitbox.hpp"
 #include "Sprite.hpp"

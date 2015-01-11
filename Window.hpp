@@ -1,7 +1,8 @@
 #ifndef WINDOW_HPP
 # define WINDOW_HPP
 
-#include <ncurses.h>
+# include <ncurses.h>
+# include "Console.hpp"
 
 class Window
 {

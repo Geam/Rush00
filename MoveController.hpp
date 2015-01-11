@@ -1,10 +1,12 @@
 #ifndef MOVECONTROLLER_HPP
 # define MOVECONTROLLER_HPP
+
 # include <string>
 # include <sstream>
 # include <iostream>
 # include "Position.hpp"
 # include "Pattern.hpp"
+# include "Console.hpp"
 
 class MoveController
 {

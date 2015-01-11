@@ -1,8 +1,10 @@
 #ifndef ACHARACTER_HPP
 # define ACHARACTER_HPP
+
 # include "AGameEntity.hpp"
 # include "Missile.hpp"
 # include "Position.hpp"
+# include "Console.hpp"
 
 class ACharacter : public AGameEntity
 {

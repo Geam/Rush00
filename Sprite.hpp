@@ -1,6 +1,8 @@
 #ifndef SPRITE_HPP
 # define SPRITE_HPP
+
 # include <iostream>
+# include "Console.hpp"
 
 class Sprite
 {
