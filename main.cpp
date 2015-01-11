@@ -124,6 +124,36 @@ int					main(void)
 		buff << "FPS: " << fps.get();
 		refresh();
 		displayService.display(buff.str(), Position(row - 8, 1), 2, debug.getWindow());
+
+		Sprite          s;
+		std::string     str[] = {
+				"     *    ",
+				"    **    ",
+				"   ****** ",
+				"  ** **** ",
+				" **  *    ",
+				"*    *    ",
+				"     **   ",
+				"     **   ",
+				"*    *    ",
+				" **  *    ",
+				"  ** **** ",
+				"   ****** ",
+				"    **    ",
+				"     *    "
+		};
+		s.tempT = str;
+		s.tempH = 14;
+		s.tempW = 10;
+		(void) s;
+//		for (int k = 0; k < 170; k++) {
+//			displayService.display(s, Position(160 - k, 15), 2, game.getWindow());
+//			wrefresh(game.getWindow());
+//			getch();
+//		}
+
+
+
 		wrefresh(game.getWindow());
 		wrefresh(debug.getWindow());
 		i++;
