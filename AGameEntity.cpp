@@ -1,7 +1,7 @@
 #include "AGameEntity.hpp"
 
-AGameEntity::AGameEntity(int x, int y, int wdth, int hgth, int speed, int maxspeed, Sprite const & sprite) :
-	_pos(Position(x, y)), _hb(Hitbox(wdth, hgth)), _sp(sprite), _speed(speed), _maxspeed(maxspeed), _dead(false),
+AGameEntity::AGameEntity(int x, int y, int wdth, int hgth, int speed, Sprite const & sprite) :
+	_pos(Position(x, y)), _hb(Hitbox(wdth, hgth)), _sp(sprite), _speed(speed), _maxspeed(speed), _dead(false),
 	_index(AGameEntity::_nb_inst++)
 {
 	std::cout << "[CONSTRUCT] Game Entity" << std::endl;

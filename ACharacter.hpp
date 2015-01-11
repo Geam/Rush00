@@ -1,26 +1,28 @@
 #ifndef ACHARACTER_HPP
 # define ACHARACTER_HPP
 # include "AGameEntity.hpp"
+# include "Missile.hpp"
 
 class ACharacter : public AGameEntity
 {
 	public:
+		ACharacter(int x, int y, int wdth, int hght, Sprite const & Sprite, int frate, int speed);
 		ACharacter(ACharacter const & src);
 		virtual ~ACharacter( void );
 		ACharacter &	operator=(ACharacter const & rhs);
 
-		Missile	const	&fireMissile(void);
-		int				getFireRate() const;
-		int				getSpeed() const;
+		Missile	const	&fireMissile(std::string pattern);
+		int				getFireRate(void) const;
+		int				getMaxFireRate(void) const;
+		int				getSpeed(void) const;
+		int				getMaxSpeed(void) const;
 
 	protected:
+		ACharacter( void );
 		int				_frate;
 		int				_maxfrate;
 		int				_speed;
 		int				_maxspeed;
-
-	private:
-		ACharacter( void );
 };
 
 #endif /* ACHARACTER_HPP */
