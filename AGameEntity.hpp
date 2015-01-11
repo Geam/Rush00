@@ -20,6 +20,7 @@ class AGameEntity
 		Hitbox const &			getHitbox(void) const;
 		Sprite const &			getSprite(void) const;
 		int						getSpeed() const;
+		int						isDead() const;
 
 		virtual void			refresh() = 0;
 		virtual void			collidesWith(AGameEntity & ge);

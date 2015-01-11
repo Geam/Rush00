@@ -12,13 +12,13 @@ class Player : public ACharacter
 		~Player( void );
 		Player &	operator=(Player const & rhs);
 
-		virtual void	destroy(void);
 		virtual void	refresh(void);
 
 		InputController & getInputControler(void) const;
 
 	private:
 		InputController	_controler;
+		void			_getInput();
 };
 
 #endif /* PLAYER_HPP */

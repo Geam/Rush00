@@ -19,11 +19,7 @@ Player &		Player::operator=(Player const & rhs)
 	return *this;
 }
 
-void			Player::destroy(void)
-{
-}
-
-void			Player::refresh(void)
+void			Player::_getInput(void)
 {
 	int			thisx;
 	int			thisy;
@@ -41,6 +37,17 @@ void			Player::refresh(void)
 	}
 	if (this->getInputControler().getInput() == 3)
 		this->fireMissile("4");
+}
+
+void			Player::refresh(void)
+{
+	if (this->_speed == 0)
+	{
+		this->_getInput();
+		this->_speed = this->_maxspeed;
+	}
+	else
+		this->_speed--;
 }
 
 Player::Player() : ACharacter(0, 0, 3, 3)

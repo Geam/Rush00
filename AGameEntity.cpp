@@ -73,6 +73,11 @@ AGameEntity *			AGameEntity::getHead()
 	return AGameEntity::_head;
 }
 
+int						AGameEntity::isDead() const
+{
+	return this->_dead;
+}
+
 void				AGameEntity::pushFront(AGameEntity *alist)
 {
 	AGameEntity *save = AGameEntity::_head;
@@ -116,4 +121,5 @@ std::ostream &			operator<<(std::ostream & o, AGameEntity const & rhs)
 	return o;
 }
 
-unsigned int _nb_inst = 0;
+unsigned int	_nb_inst = 0;
+AGameEntity		*_head = NULL;
