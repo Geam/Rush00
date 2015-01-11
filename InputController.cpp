@@ -16,34 +16,32 @@ InputController &	InputController::operator=(InputController const & rhs)
 	return *this;
 }
 
-void				InputController::readInput(void)
+
+int					InputController::getInput(void)
 {
 	int				ch;
+	int				res = -1;
 
 	ch = getch();
 	switch (ch)
 	{
 		case 27:
-			this->_input = 0;
+			res = 0;
 			break ;
 		case ' ':
-			this->_input = 1;
+			res = 1;
 			break ;
 		case KEY_UP:
-			this->_input = 2;
+			res = 2;
 			break ;
 		case KEY_DOWN:
-			this->_input = 3;
+			res = 3;
 			break ;
 	}
+	return res;
 }
 
-int					InputController::getInput(void)
-{
-	return this->_input;
-}
-
-InputController::InputController( void ) : _input(-1)
+InputController::InputController( void )
 {
 }
 

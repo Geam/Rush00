@@ -1,6 +1,6 @@
 .SUFFIXES:
 
-CXX = /usr/bin/g++
+CXX = g++
 RM = /bin/rm
 CXXFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -lncurses
