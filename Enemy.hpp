@@ -6,7 +6,7 @@
 class Enemy : public ACharacter
 {
 	public:
-		Enemy::Enemy(int x, int y, std::string pattern, Sprite const & sprt);
+		Enemy(int x, int y, std::string pattern, Sprite const & sprt);
 		Enemy(Enemy const & src);
 		virtual ~Enemy( void );
 		Enemy &	operator=(Enemy const & rhs);

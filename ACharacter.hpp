@@ -2,6 +2,7 @@
 # define ACHARACTER_HPP
 # include "AGameEntity.hpp"
 # include "Missile.hpp"
+# include "Position.hpp"
 
 class ACharacter : public AGameEntity
 {
@@ -11,7 +12,7 @@ class ACharacter : public AGameEntity
 		virtual ~ACharacter( void );
 		ACharacter &	operator=(ACharacter const & rhs);
 
-		Missile	const	&fireMissile(std::string pattern);
+		Missile &		fireMissile(std::string pattern);
 		int				getFireRate(void) const;
 		int				getMaxFireRate(void) const;
 		int				getSpeed(void) const;
@@ -23,6 +24,7 @@ class ACharacter : public AGameEntity
 		int				_maxfrate;
 		int				_speed;
 		int				_maxspeed;
+		Position		_mslOrigin;
 };
 
 #endif /* ACHARACTER_HPP */

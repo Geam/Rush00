@@ -23,7 +23,7 @@ Enemy::~Enemy( void )
 
 Enemy &	Enemy::operator=(Enemy const & rhs)
 {
-	this->ACharacter::operator=();
+	this->ACharacter::operator=(rhs);
 	this->_pattern = rhs.getPattern();
 }
 

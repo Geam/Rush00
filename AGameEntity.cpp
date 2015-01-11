@@ -32,17 +32,17 @@ AGameEntity &			AGameEntity::operator=(AGameEntity const & rhs)
 	return *this;
 }
 
-Position const &				AGameEntity::getPosition(void) const
+Position const &		AGameEntity::getPosition(void) const
 {
 	return this->_pos;
 }
 
-Hitbox const &				AGameEntity::getHitbox(void) const
+Hitbox const &			AGameEntity::getHitbox(void) const
 {
 	return this->_hb;
 }
 
-Sprite const &				AGameEntity::getSprite(void) const
+Sprite const &			AGameEntity::getSprite(void) const
 {
 	return this->_sp;
 }
