@@ -26,6 +26,12 @@ Obstacle &		Obstacle::operator=(Obstacle const & rhs)
 	return *this;
 }
 
+void			Obstacle::collidesWith(AGameEntity const & ge)
+{
+	(void)ge;
+	return ;
+}
+
 void			Obstacle::refresh(void)
 {
 	int			thisx;

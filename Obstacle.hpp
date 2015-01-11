@@ -11,6 +11,8 @@ class Obstacle : public AGameEntity
 		~Obstacle( void );
 		Obstacle &			operator=(Obstacle const & rhs);
 
+		virtual void		collidesWith(AGameEntity const & ge);
+
 		virtual void		refresh(void);
 		virtual void		destroy(void);
 

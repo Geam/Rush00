@@ -54,8 +54,8 @@ int						AGameEntity::getSpeed() const
 
 void					AGameEntity::collidesWith(AGameEntity & ge)
 {
+	(void)ge;
 	this->_dead = true;
-	ge._dead = true;
 }
 
 AGameEntity *			AGameEntity::getNext() const
