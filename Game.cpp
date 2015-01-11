@@ -3,20 +3,20 @@
 
 Game::Game( void )
 {
-	std::cout << "[CONSTRUCT] Game" << std::endl;
+	Console::log("[CONSTRUCT] Game", 4);
 	return ;
 }
 
 Game::Game(Game const & src)
 {
-	std::cout << "[CONSTRUCT] Game" << std::endl;
+	Console::log("[CONSTRUCT] Game", 4);
 	*this = src;
 	return ;
 }
 
 Game::~Game( void )
 {
-	std::cout << "[DESTRUCT] Game" << std::endl;
+	Console::log("[DESTRUCT] Game", 4);
 }
 
 Game &	Game::operator=(Game const & rhs)

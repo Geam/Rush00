@@ -6,7 +6,7 @@ Enemy::Enemy(int x, int y, int frate, int speed, std::string pattern) : ACharact
 	const std::string tsprite[] = {
 		"-<{"
 	};
-	std::cout << "[CONSTRUCT] Enemy" << std::endl;
+	Console::log("[CONSTRUCT] Enemy", 4);
 	this->_pattern.set(pattern);
 	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
 	this->_hb.setWidth(2);
@@ -23,7 +23,7 @@ Enemy::Enemy(Enemy const & src) : ACharacter(src)
 
 Enemy::~Enemy( void )
 {
-	std::cout << "[DESTRUCT] Enemy" << std::endl;
+	Console::log("[DESTRUCT] Enemy", 4);
 	return;
 }
 

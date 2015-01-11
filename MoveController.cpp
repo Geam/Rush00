@@ -3,20 +3,20 @@
 
 MoveController::MoveController(Position & position, Pattern & pattern) : _position(&position), _pattern(&pattern)
 {
-	std::cout << "[CONSTRUCTED] MoveController" << std::endl;
+	Console::log("[CONSTRUCTED] MoveController", 4);
 	return ;
 }
 
 MoveController::MoveController(MoveController const & src)
 {
-	std::cout << "[CONSTRUCTED] MoveController" << std::endl;
+	Console::log("[CONSTRUCTED] MoveController", 4);
 	*this = src;
 	return ;
 }
 
 MoveController::~MoveController( void )
 {
-	std::cout << "[DESTRUCTED] MoveController" << std::endl;
+	Console::log("[DESTRUCTED] MoveController", 4);
 	delete this->_position;
 	delete this->_pattern;
 }

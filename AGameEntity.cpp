@@ -4,14 +4,14 @@ AGameEntity::AGameEntity(int x, int y, int speed) : _speed(0), _maxspeed(speed),
 	_index(AGameEntity::_nb_inst++)
 {
 	this->_pos.update(x, y);
-	std::cout << "[CONSTRUCT] Game Entity" << std::endl;
+	Console::log("[CONSTRUCT] Game Entity", 4);
 	AGameEntity::pushFront(this);
 	return ;
 }
 
 AGameEntity::AGameEntity(AGameEntity const & src) : _index(AGameEntity::_nb_inst++)
 {
-	std::cout << "[CONSTRUCT] Game Entity" << std::endl;
+	Console::log("[CONSTRUCT] Game Entity", 4);
 	*this = src;
 	AGameEntity::pushFront(this);
 	return ;
@@ -19,7 +19,7 @@ AGameEntity::AGameEntity(AGameEntity const & src) : _index(AGameEntity::_nb_inst
 
 AGameEntity::~AGameEntity( void )
 {
-	std::cout << "[DESTRUCT] Game Entity" << std::endl;
+	Console::log("[DESTRUCT] Game Entity", 4);
 	deleteNode();
 	return ;
 }

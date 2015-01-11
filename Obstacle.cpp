@@ -11,13 +11,13 @@ Obstacle::Obstacle(int x, int y, int spe) : AGameEntity(x, y, spe)
 
 Obstacle::Obstacle(Obstacle const & src) : AGameEntity(src)
 {
-	std::cout << "[CONSTRUCT] Obstacle" << std::endl;
+	Console::log("[CONSTRUCT] Obstacle", 4);
 	*this = src;
 }
 
 Obstacle::~Obstacle( void )
 {
-	std::cout << "[DESTRUCT] Obstacle" << std::endl;
+	Console::log("[DESTRUCT] Obstacle", 4);
 }
 
 Obstacle &		Obstacle::operator=(Obstacle const & rhs)
@@ -55,6 +55,6 @@ void			Obstacle::destroy(void)
 
 Obstacle::Obstacle( void )
 {
-	std::cout << "[CONSTRUCT] Obstacle" << std::endl;
+	Console::log("[CONSTRUCT] Obstacle", 4);
 }
 
