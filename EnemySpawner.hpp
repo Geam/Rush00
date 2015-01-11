@@ -1,6 +1,10 @@
 #ifndef ENEMYSPAWNER_HPP
 # define ENEMYSPAWNER_HPP
 
+# include <string>
+# include <cstdlib>
+# include "Enemy.hpp"
+
 class EnemySpawner
 {
 	public:
@@ -12,6 +16,8 @@ class EnemySpawner
 		void			refresh(void);
 
 	private:
+		int				_winwdth;
+		int				_winhgt;
 		int				_speed;
 		int				_maxspeed;
 		std::string		_pattern[];

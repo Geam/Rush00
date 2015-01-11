@@ -50,6 +50,14 @@ void			Player::refresh(void)
 		this->_speed--;
 }
 
+void			Player::fireMissile(std::string pattern)
+{
+	if (this->_frate == 0)
+		Missile(this->_mslOrigin + this->_pos, 0, pattern);
+	else
+		this->_frate--;
+}
+
 Player::Player() : ACharacter(0, 0, 3, 3)
 {
 	const std::string tsprite[] = {
@@ -58,4 +66,5 @@ Player::Player() : ACharacter(0, 0, 3, 3)
 	this->_hb.setWidth(1);
 	this->_hb.setHeight(2);
 	this->_sp.set(tsprite, 3);
+	this->_mslOrigin.update(this->_hb.getWidth() + 1, this->_hb.getHeight() / 2 + 1);
 }

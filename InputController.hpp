@@ -9,7 +9,7 @@ class InputController
 		~InputController( void );
 		InputController &	operator=(InputController const & rhs);
 
-		void				readInput(char c);
+		void				readInput(void);
 		int					getInput(void);
 
 	private:

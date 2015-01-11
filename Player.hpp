@@ -10,15 +10,16 @@ class Player : public ACharacter
 		Player(void);
 		Player(Player const & src);
 		~Player( void );
-		Player &	operator=(Player const & rhs);
+		Player &					operator=(Player const & rhs);
 
-		virtual void	refresh(void);
+		virtual void				refresh(void);
+		virtual void				fireMissile(std::string pattern);
 
-		InputController & getInputControler(void) const;
+		InputController &			getInputControler(void) const;
 
 	private:
-		InputController	_controler;
-		void			_getInput();
+		InputController				_controler;
+		void						_getInput();
 };
 
 #endif /* PLAYER_HPP */

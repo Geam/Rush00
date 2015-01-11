@@ -20,6 +20,11 @@ Position &	Position::operator=(Position const & rhs)
 	return *this;
 }
 
+Position	Position::operator+(Position const & rhs)
+{
+	return Position(this->_x + rhs._x, this->_y + rhs._y);
+}
+
 bool		Position::operator==(Position const & rhs) const
 {
 	return (this->_x == rhs._x && this->_y == rhs._y);

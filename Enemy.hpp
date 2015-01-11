@@ -9,14 +9,18 @@ class Enemy : public ACharacter
 		Enemy(int x, int y, int frate, int speed, std::string pattern);
 		Enemy(Enemy const & src);
 		virtual ~Enemy( void );
-		Enemy &	operator=(Enemy const & rhs);
+		Enemy &				operator=(Enemy const & rhs);
 
-		Pattern &		getPattern(void) const;
+		Pattern &			getPattern(void) const;
 
 		virtual void		refresh(void);
+		virtual void		fireMissile(std::string pattern);
+
+		static int			enemyCount;
 
 	protected:
 		Pattern			_pattern;
+		Position		_mslOrigin;
 		MoveController	_moveCtrl;
 
 	private:

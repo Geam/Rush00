@@ -1,6 +1,8 @@
-CC = /usr/bin/g++
+.SUFFIXES:
+
+CXX = /usr/bin/g++
 RM = /bin/rm
-CFLAGS = -Wall -Wextra Wno-used -Werror -I $(HPATH)
+CXXFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -lncurses
 
 NAME = ft_retro
@@ -8,8 +10,11 @@ NAME = ft_retro
 SRC = ACharacter.cpp \
 	AGameEntity.cpp \
 	CollisionChecker.cpp \
+	DisplaySprite.cpp \
 	Enemy.cpp \
+	EnemySpawner.cpp \
 	Fps.cpp \
+	Game.cpp \
 	Hitbox.cpp \
 	InputController.cpp \
 	Interval.cpp \
@@ -24,21 +29,24 @@ SRC = ACharacter.cpp \
 	main.cpp
 
 HEADER = ACharacter.hpp \
-AGameEntity.hpp \
-CollisionChecker.hpp \
-Enemy.hpp \
-Fps.hpp \
-Hitbox.hpp \
-InputController.hpp \
-Interval.hpp \
-Missile.hpp \
-MoveController.hpp \
-Obstacle.hpp \
-Pattern.hpp \
-Player.hpp \
-Position.hpp \
-Sprite.hpp \
-Window.hpp
+	AGameEntity.hpp \
+	CollisionChecker.hpp \
+	DisplaySprite.hpp \
+	Enemy.hpp \
+	EnemySpawner.hpp \
+	Fps.hpp \
+	Game.hpp \
+	Hitbox.hpp \
+	InputController.hpp \
+	Interval.hpp \
+	Missile.hpp \
+	MoveController.hpp \
+	Obstacle.hpp \
+	Pattern.hpp \
+	Player.hpp \
+	Position.hpp \
+	Sprite.hpp \
+	Window.hpp
 
 OFILES = $(patsubst %.cpp,%.o, $(SRC))
 
@@ -48,11 +56,11 @@ all: $(NAME)
 
 $(NAME): $(OFILES)
 	@echo "Building $(NAME)"
-	@$(CC) $(LDFLAGS) $^ -o $@
+	@$(CXX) $(LDFLAGS) $^ -o $@
 
-%.o: %.c $(HEADER)
+%.o: %.cpp $(HEADER)
 	@echo "Creating file $@"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	@echo "Deletion of building files"
@@ -63,7 +71,3 @@ fclean: clean
 	@$(RM) -f $(NAME)
 
 re: fclean all
-
-
-
-
