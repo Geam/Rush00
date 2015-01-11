@@ -7,8 +7,6 @@
 #include "Position.hpp"
 #include "DisplaySprite.hpp"
 
-WINDOW *g_debug = NULL;
-
 // enables to save the terminal current color and restore them later (using the boolean save)
 void    switchDefaultColors(bool save) {
 	static short black[3];
@@ -109,7 +107,7 @@ int					main(void)
 	displayService.display("Game", Position(1, 0), 3, game.getWindow());
 	displayService.display("Debug", Position(1, 0), 3, debug.getWindow());
 
-	g_debug = debug.getWindow();
+	Console console(debug.getWindow());
 
 	// Secondary variables
 	Fps					fps;

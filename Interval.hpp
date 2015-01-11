@@ -1,20 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Interval.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: afaucher <afaucher@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/10 13:36:04 by afaucher          #+#    #+#             */
-/*   Updated: 2015/01/10 15:37:53 by tdieumeg         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef INTERVAL_HPP
 # define INTERVAL_HPP
 # include <string>
 # include <sstream>
 # include <iostream>
+# include "Console.hpp"
 
 class Interval
 {
@@ -30,8 +19,6 @@ class Interval
 
 	private:
 		unsigned int	_initial;
-
-		static void		_log(std::string message, int color);
 
 };
 

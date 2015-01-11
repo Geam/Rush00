@@ -6,7 +6,7 @@
 /*   By: afaucher <afaucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:14:01 by afaucher          #+#    #+#             */
-/*   Updated: 2015/01/10 17:29:11 by tdieumeg         ###   ########.fr       */
+/*   Updated: 2015/01/11 21:14:38 by frale-co         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Fps.hpp"
@@ -17,20 +17,20 @@ extern WINDOW *g_debug;
 
 Fps::Fps( void ) : _m_fps(0), _m_fpscount(0)
 {
-	Fps::_log("[CONSTRUCTED] FPS...", 4);
+	Console::log("[CONSTRUCTED] FPS...", 4);
 	return ;
 }
 
 Fps::Fps(Fps const & src)
 {
-	Fps::_log("[CONSTRUCTED] FPS...", 4);
+	Console::log("[CONSTRUCTED] FPS...", 4);
 	*this = src;
 	return ;
 }
 
 Fps::~Fps( void )
 {
-	Fps::_log("[DESTRUCTED] FPS...", 2);
+	Console::log("[DESTRUCTED] FPS...", 2);
 	return ;
 }
 
@@ -75,20 +75,3 @@ std::ostream &	operator<<(std::ostream & o, Fps const & rhs)
 }
 
 
-void	Fps::_log(std::string message, int color) {
-	int y, maxY, maxX;
-
-	maxX = getmaxx(g_debug);
-	maxY = getmaxy(g_debug);
-	y = getcury(g_debug);
-	if (y + 1 == maxY)
-		y = 1;
-	if (y == 0)
-		y++;
-	wattron(g_debug, COLOR_PAIR(color));
-	mvwhline(g_debug, y, 1, ' ', maxX - 10);
-	wmove(g_debug, y, 1);
-	mvwprintw(g_debug, y, 1, message.c_str());
-	wmove(g_debug, y + 1, 1);
-	wattroff(g_debug, COLOR_PAIR(color));
-}

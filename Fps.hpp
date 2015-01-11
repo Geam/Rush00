@@ -4,6 +4,7 @@
 # include <sstream>
 # include <iostream>
 # include "Interval.hpp"
+# include "Console.hpp"
 
 class Fps
 {
@@ -22,8 +23,6 @@ class Fps
 		unsigned int	_m_fpscount;
 		Interval		_m_fpsinterval;
 
-	private:
-		static void		_log(std::string message, int color);
 };
 
 std::ostream &		operator<<(std::ostream & o, Fps const & rhs);
