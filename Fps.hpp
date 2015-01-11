@@ -21,6 +21,9 @@ class Fps
 		unsigned int	_m_fps;
 		unsigned int	_m_fpscount;
 		Interval		_m_fpsinterval;
+
+	private:
+		void	_log(std::string message, int color) const;
 };
 
 std::ostream &		operator<<(std::ostream & o, Fps const & rhs);

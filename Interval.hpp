@@ -30,6 +30,9 @@ class Interval
 
 	private:
 		unsigned int _initial;
+
+		void	_log(std::string message, int color) const;
+
 };
 
 std::ostream &		operator<<(std::ostream & o, Interval const & rhs);

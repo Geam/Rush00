@@ -18,48 +18,20 @@ extern WINDOW *g_debug;
 
 Interval::Interval( void ) : _initial(std::clock())
 {
-	int y, maxY, maxX;
-
-	maxX = getmaxx(g_debug);
-	maxY = getmaxy(g_debug);
-	y = getcury(g_debug);
-	if (y + 1 == maxY)
-		y = 1;
-	if (y == 0)
-		y++;
-	wattron(g_debug, COLOR_PAIR(4));
-	mvwhline(g_debug, y, 1, ' ', maxX - 10);
-	wmove(g_debug, y, 1);
-	mvwprintw(g_debug, y, 1, "[CONSTRUCTED] Interval...");
-	wmove(g_debug, y + 1, 1);
-	wattroff(g_debug, COLOR_PAIR(4));
+	this->_log("[CONSTRUCTED] Interval...", 4);
 	return ;
 }
 
 Interval::Interval(Interval const & src)
 {
-	int y, maxY, maxX;
-
-	maxY = getmaxy(g_debug);
-	maxX = getmaxx(g_debug);
-	y = getcury(g_debug);
-	if (y + 1 == maxY)
-		y = 1;
-	if (y == 0)
-		y++;
-	wattron(g_debug, COLOR_PAIR(4));
-	mvwhline(g_debug, y, 1, ' ', maxX - 10);
-	wmove(g_debug, y, 1);
-	mvwprintw(g_debug, y, 1, "[CONSTRUCTED] Interval...");
-	wmove(g_debug, y + 1, 1);
-	wattroff(g_debug, COLOR_PAIR(4));
+	this->_log("[CONSTRUCTED] Interval...", 4);
 	*this = src;
 	return ;
 }
 
 Interval::~Interval( void )
 {
-//	std::cout << "[DESTRUCT] Interval" << std::endl;
+	this->_log("[DESTRUCTED] Interval...", 2);
 	return ;
 }
 
@@ -94,3 +66,20 @@ std::ostream &	operator<<(std::ostream & o, Interval const & rhs)
 	return o;
 }
 
+void	Interval::_log(std::string message, int color) const {
+	int y, maxY, maxX;
+
+	maxX = getmaxx(g_debug);
+	maxY = getmaxy(g_debug);
+	y = getcury(g_debug);
+	if (y + 1 == maxY)
+		y = 1;
+	if (y == 0)
+		y++;
+	wattron(g_debug, COLOR_PAIR(color));
+	mvwhline(g_debug, y, 1, ' ', maxX - 10);
+	wmove(g_debug, y, 1);
+	mvwprintw(g_debug, y, 1, message.c_str());
+	wmove(g_debug, y + 1, 1);
+	wattroff(g_debug, COLOR_PAIR(color));
+}

@@ -17,62 +17,20 @@ extern WINDOW *g_debug;
 
 Fps::Fps( void ) : _m_fps(0), _m_fpscount(0)
 {
-	int y, maxY, maxX;
-
-	maxY = getmaxy(g_debug);
-	maxX = getmaxx(g_debug);
-	y = getcury(g_debug);
-	if (y + 1 == maxY)
-		y = 1;
-	if (y == 0)
-		y++;
-	wattron(g_debug, COLOR_PAIR(4));
-	mvwhline(g_debug, y, 1, ' ', maxX - 10);
-	wmove(g_debug, y, 1);
-	mvwprintw(g_debug, y, 1, "[CONSTRUCTED] FPS...");
-	wmove(g_debug, y + 1, 1);
-	wattroff(g_debug, COLOR_PAIR(4));
+	this->_log("[CONSTRUCTED] FPS...", 4);
 	return ;
 }
 
 Fps::Fps(Fps const & src)
 {
-	int y, maxY, maxX;
-
-	maxY = getmaxy(g_debug);
-	maxX = getmaxx(g_debug);
-	y = getcury(g_debug);
-	if (y + 1 == maxY)
-		y = 1;
-	if (y == 0)
-		y++;
-	wattron(g_debug, COLOR_PAIR(4));
-	mvwhline(g_debug, y, 1, ' ', maxX - 10);
-	wmove(g_debug, y, 1);
-	mvwprintw(g_debug, y, 1, "[CONSTRUCTED] FPS...");
-	wmove(g_debug, y + 1, 1);
-	wattroff(g_debug, COLOR_PAIR(4));
+	this->_log("[CONSTRUCTED] FPS...", 4);
 	*this = src;
 	return ;
 }
 
 Fps::~Fps( void )
 {
-	int y, maxY, maxX;
-
-	maxY = getmaxy(g_debug);
-	maxX = getmaxx(g_debug);
-	y = getcury(g_debug);
-	if (y + 1 == maxY)
-		y = 1;
-	if (y == 0)
-		y++;
-	wattron(g_debug, COLOR_PAIR(2));
-	mvwprintw(g_debug, y, 1, "[DESTRUCTED] FPS...");
-	wvline(g_debug, ' ', maxX - 10);
-	wmove(g_debug, y + 1, 1);
-	wattron(g_debug, COLOR_PAIR(2));
-
+	this->_log("[DESTRUCTED] FPS...", 2);
 	return ;
 }
 
@@ -114,4 +72,23 @@ std::ostream &	operator<<(std::ostream & o, Fps const & rhs)
 {
 	o << rhs.toString();
 	return o;
+}
+
+
+void	Fps::_log(std::string message, int color) const {
+	int y, maxY, maxX;
+
+	maxX = getmaxx(g_debug);
+	maxY = getmaxy(g_debug);
+	y = getcury(g_debug);
+	if (y + 1 == maxY)
+		y = 1;
+	if (y == 0)
+		y++;
+	wattron(g_debug, COLOR_PAIR(color));
+	mvwhline(g_debug, y, 1, ' ', maxX - 10);
+	wmove(g_debug, y, 1);
+	mvwprintw(g_debug, y, 1, message.c_str());
+	wmove(g_debug, y + 1, 1);
+	wattroff(g_debug, COLOR_PAIR(color));
 }
