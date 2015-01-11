@@ -2,7 +2,8 @@
 #include <sstream>
 #include "Hitbox.hpp"
 
-Hitbox::Hitbox( void ) {}
+Hitbox::Hitbox( void ) : _wth(0), _hei(0)
+{}
 
 Hitbox::Hitbox(int w, int h ) : _wth(w), _hei(h) {
 }

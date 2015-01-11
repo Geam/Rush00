@@ -47,9 +47,9 @@ std::string		Sprite::toString(void) const {
 	return buff.str();
 }
 
-Sprite::Sprite( void )
+Sprite::Sprite( void ) : _sprite(NULL), _y(0)
 {
-	std::cout << "[DESTRUCTED] Sprite" << std::endl;
+	std::cout << "[CONSTRUCTED] Sprite" << std::endl;
 	return ;
 }
 

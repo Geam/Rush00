@@ -5,6 +5,7 @@
 class Hitbox
 {
 	public:
+		Hitbox( void );
 		Hitbox(int wth, int hei);
 		Hitbox(Hitbox const & src);
 		~Hitbox( void );
@@ -17,7 +18,6 @@ class Hitbox
 	private:
 		int			_wth;
 		int			_hei;
-		Hitbox( void );
 };
 
 std::ostream &	operator<<(std::ostream & o, Hitbox const & rhs);

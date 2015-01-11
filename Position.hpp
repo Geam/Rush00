@@ -5,6 +5,7 @@
 class Position
 {
 	public:
+		Position( void );
 		Position(int x, int y);
 		Position(Position const & src);
 		~Position( void );
@@ -18,7 +19,6 @@ class Position
 		std::string	toString(void) const;
 
 	private:
-		Position( void );
 		int			_x;
 		int			_y;
 };

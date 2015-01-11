@@ -10,7 +10,8 @@ Position::Position(Position const & src) : _x(src.getX()), _y(src.getY())
 {
 }
 
-Position::~Position( void ){}
+Position::~Position( void ){
+}
 
 Position &	Position::operator=(Position const & rhs)
 {
@@ -46,7 +47,7 @@ std::string	Position::toString(void) const {
 	return buff.str();
 }
 
-Position::Position(void)
+Position::Position(void) : _x(0), _y(0)
 {
 }
 

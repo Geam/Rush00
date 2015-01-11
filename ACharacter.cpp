@@ -1,9 +1,8 @@
 #include <iostream>
 #include "ACharacter.hpp"
 
-ACharacter::ACharacter(int x, int y, int wdth, int hght, Sprite const & sprt, int frate, int speed) : AGameEntity(x, y, wdth, hght, speed, sprt), _frate(frate), _maxfrate(frate)
+ACharacter::ACharacter(int x, int y, int frate, int speed) : AGameEntity(x, y, speed), _frate(0), _maxfrate(frate)
 {
-	this->_mslOrigin = Position(x, (y + hght) / 2);
 	std::cout << "[CONSTRUCTED] ACharacter" << std::endl;
 	return;
 }
@@ -28,8 +27,9 @@ ACharacter &	ACharacter::operator=(ACharacter const & rhs)
 	return *this;
 }
 
-Missile	&		ACharacter::fireMissile(std::string pattern)
+void			ACharacter::fireMissile(std::string pattern)
 {
+	(void)pattern;
 	return ;
 }
 

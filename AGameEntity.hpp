@@ -10,7 +10,7 @@
 class AGameEntity
 {
 	public:
-		AGameEntity(int x, int y, int wdth, int hght, int speed, Sprite const & sprite);
+		AGameEntity(int x, int y, int spe);
 		AGameEntity(AGameEntity const & src);
 		virtual ~AGameEntity( void );
 
@@ -37,9 +37,9 @@ class AGameEntity
 		Sprite					_sp;
 		AGameEntity				*_next;
 		AGameEntity				*_previous;
-		int						_dead;
 		int						_speed;
 		int						_maxspeed;
+		int						_dead;
 		int						_index;
 		static AGameEntity		*_head;
 		AGameEntity( void );

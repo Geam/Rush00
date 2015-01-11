@@ -5,6 +5,7 @@
 class Sprite
 {
 	public:
+		Sprite( void );
 		Sprite(std::string *sprite, int y);
 		Sprite(Sprite const & src);
 		~Sprite( void );
@@ -15,7 +16,6 @@ class Sprite
 		std::string		toString(void) const;
 
 	private:
-		Sprite( void );
 		std::string *	_sprite;
 		int				_y;
 };
