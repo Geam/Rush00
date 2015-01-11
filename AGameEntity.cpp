@@ -57,8 +57,8 @@ int						AGameEntity::getSpeed() const
 
 void					AGameEntity::collidesWith(AGameEntity & ge)
 {
-	(void)ge;
-	return ;
+	this->_dead = true;
+	ge._dead = true;
 }
 
 AGameEntity *			AGameEntity::getNext() const
@@ -79,7 +79,6 @@ AGameEntity *			AGameEntity::getHead()
 void				AGameEntity::pushFront(AGameEntity *alist)
 {
 	AGameEntity *save = AGameEntity::_head;
-
 	AGameEntity::_head = alist;
 	alist->_next = save;
 	if (save != NULL)

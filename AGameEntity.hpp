@@ -26,7 +26,7 @@ class AGameEntity
 
 		virtual AGameEntity		*getNext() const;
 		virtual AGameEntity		*getPrevious() const;
-		static AGameEntity		getHead();
+		static AGameEntity		*getHead();
 		static void				pushFront(AGameEntity *alist);
 		void					deleteNode();
 		std::string				toString(void) const;
