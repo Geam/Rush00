@@ -20,11 +20,11 @@ Window::Window(int const x, int const y, int const h, int const w) : _clock(0), 
 	WINDOW	*win;
 
 	win = newwin(this->_h, this->_w, this->_y, this->_x);
-	wborder(win, '|','|','_','_','+','+','+','+');
-	wrefresh(win);
 
-//	std::cout << "[CONSTRUCT] Window "
-//		<< this->getX() << " " << this->getY() << std::endl;
+	wattron(win, COLOR_PAIR(5));
+	wborder(win, ACS_VLINE, ACS_VLINE, ACS_HLINE, ACS_HLINE, ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
+	wrefresh(win);
+	wattroff(win, COLOR_PAIR(5));
 
 	this->_window = win;
 }

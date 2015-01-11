@@ -44,7 +44,7 @@ void    switchDefaultColors(bool save) {
 
 void    initColors() {
 	// init default color - TODO: later create different games color profiles
-	init_color(COLOR_BLACK, 0, 0, 0);
+	init_color(COLOR_BLACK, 20, 50, 150);
 	init_color(COLOR_RED, 700, 0, 0);
 	init_color(COLOR_GREEN, 0, 700, 0);
 	init_color(COLOR_YELLOW, 700, 700, 0);
@@ -76,8 +76,9 @@ void    setColors(void) {
 	// init pairs : Here define our color pairs.
 	init_pair(1, COLOR_BLACK, COLOR_BLACK);
 	init_pair(2, COLOR_RED, COLOR_BLACK);
-	init_pair(3, COLOR_BLACK, COLOR_MAGENTA);
+	init_pair(3, COLOR_BLUE, COLOR_CYAN);
 	init_pair(4, COLOR_GREEN, COLOR_BLACK);
+	init_pair(5, COLOR_CYAN, COLOR_BLACK);
 
 }
 
@@ -131,5 +132,5 @@ int					main(void)
 		fps.update();
 		itv.refresh();
 	}
-//	win.switchDefaultColors(false); //TODO: en faire une fonction membre de Window
+	switchDefaultColors(false); // TODO: Before exiting, launch this function to restore Terminal default colors
 }
