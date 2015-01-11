@@ -1,6 +1,7 @@
 #ifndef ENEMY_HPP
 # define ENEMY_HPP
 # include "Character.hpp"
+# include "MoveController.hpp"
 
 class Enemy : public ACharacter
 {
@@ -9,12 +10,16 @@ class Enemy : public ACharacter
 		Enemy(Enemy const & src);
 		virtual ~Enemy( void );
 		Enemy &	operator=(Enemy const & rhs);
+		
+		Pattern &		getPattern(void) const;
 
 		virtual void		destroy(void);
 		virtual void		refresh(void);
 
 	protected:
-		Pattern		_pattern;
+		Pattern			_pattern;
+		MoveController	_moveCtrl;
+
 	private:
 		Enemy(void);
 };
