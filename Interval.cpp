@@ -18,20 +18,20 @@ extern WINDOW *g_debug;
 
 Interval::Interval( void ) : _initial(std::clock())
 {
-	this->_log("[CONSTRUCTED] Interval...", 4);
+	Interval::_log("[CONSTRUCTED] Interval...", 4);
 	return ;
 }
 
 Interval::Interval(Interval const & src)
 {
-	this->_log("[CONSTRUCTED] Interval...", 4);
+	Interval::_log("[CONSTRUCTED] Interval...", 4);
 	*this = src;
 	return ;
 }
 
 Interval::~Interval( void )
 {
-	this->_log("[DESTRUCTED] Interval...", 2);
+	Interval::_log("[DESTRUCTED] Interval...", 2);
 	return ;
 }
 
@@ -66,7 +66,7 @@ std::ostream &	operator<<(std::ostream & o, Interval const & rhs)
 	return o;
 }
 
-void	Interval::_log(std::string message, int color) const {
+void	Interval::_log(std::string message, int color) {
 	int y, maxY, maxX;
 
 	maxX = getmaxx(g_debug);

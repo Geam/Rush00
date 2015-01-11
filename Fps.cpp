@@ -17,20 +17,20 @@ extern WINDOW *g_debug;
 
 Fps::Fps( void ) : _m_fps(0), _m_fpscount(0)
 {
-	this->_log("[CONSTRUCTED] FPS...", 4);
+	Fps::_log("[CONSTRUCTED] FPS...", 4);
 	return ;
 }
 
 Fps::Fps(Fps const & src)
 {
-	this->_log("[CONSTRUCTED] FPS...", 4);
+	Fps::_log("[CONSTRUCTED] FPS...", 4);
 	*this = src;
 	return ;
 }
 
 Fps::~Fps( void )
 {
-	this->_log("[DESTRUCTED] FPS...", 2);
+	Fps::_log("[DESTRUCTED] FPS...", 2);
 	return ;
 }
 
@@ -75,7 +75,7 @@ std::ostream &	operator<<(std::ostream & o, Fps const & rhs)
 }
 
 
-void	Fps::_log(std::string message, int color) const {
+void	Fps::_log(std::string message, int color) {
 	int y, maxY, maxX;
 
 	maxX = getmaxx(g_debug);
