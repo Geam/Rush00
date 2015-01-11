@@ -18,7 +18,7 @@ InputController &	InputController::operator=(InputController const & rhs)
 
 void				InputController::readInput(void)
 {
-	char			ch;
+	int				ch;
 
 	ch = getch();
 	switch (ch)

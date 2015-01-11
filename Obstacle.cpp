@@ -37,13 +37,13 @@ void			Obstacle::refresh(void)
 	int			thisx;
 	int			thisy;
 
-	thisx = this->_pos.getX();
-	thisy = this->_pos.getY();
 	if (this->getSpeed() > 0)
 	{
 		this->_speed--;
 		return ;
 	}
+	thisx = this->_pos.getX();
+	thisy = this->_pos.getY();
 	this->_speed = this->_maxspeed;
 	this->_pos.update(--thisx, thisy);
 }

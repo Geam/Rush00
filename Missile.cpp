@@ -3,7 +3,8 @@
 
 Missile::Missile(int x, int y, int speed, std::string pattern) : AGameEntity(x, y, speed)
 {
-	std::string tsprite[1] = { "-" };
+	std::string *tsprite = new std::string[1];
+	tsprite[0] = "-";
 	this->_pattern.set(pattern);
 	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
 	this->_hb.setWidth(0);
@@ -14,7 +15,8 @@ Missile::Missile(int x, int y, int speed, std::string pattern) : AGameEntity(x, 
 
 Missile::Missile(Position pos, int speed, std::string pattern) : AGameEntity(pos.getX(), pos.getY(), speed)
 {
-	std::string tsprite[1] = { "-" };
+	std::string *tsprite = new std::string[1];
+	tsprite[0] = "-";
 	this->_pattern.set(pattern);
 	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
 	this->_hb.setWidth(0);

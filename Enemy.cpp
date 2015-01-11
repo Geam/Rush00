@@ -3,10 +3,9 @@
 
 Enemy::Enemy(int x, int y, int frate, int speed, std::string pattern) : ACharacter(x, y, frate, speed)
 {
-	const std::string tsprite[] = {
-		"-<{"
-	};
+	std::string *tsprite = new std::string[1];
 	std::cout << "[CONSTRUCT] Enemy" << std::endl;
+	tsprite[0] = "<{";
 	this->_pattern.set(pattern);
 	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
 	this->_hb.setWidth(2);

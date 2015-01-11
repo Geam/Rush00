@@ -15,7 +15,7 @@ Player::~Player( void )
 Player &		Player::operator=(Player const & rhs)
 {
 	AGameEntity::operator=(rhs);
-	this->_controler = rhs.getInputControler();
+	this->_controler = rhs.getInputController();
 	return *this;
 }
 
@@ -25,17 +25,17 @@ void			Player::_getInput(void)
 	int			thisy;
 
 	thisx = this->_pos.getX();
-	if (this->getInputControler().getInput() == 1)
+	if (this->getInputController().getInput() == 1)
 	{
 		thisy = this->_pos.getY() - 1;
 		this->_pos.update(thisx, thisy);
 	}
-	if (this->getInputControler().getInput() == 2)
+	if (this->getInputController().getInput() == 2)
 	{
 		thisy = this->_pos.getY() + 1;
 		this->_pos.update(thisx, thisy);
 	}
-	if (this->getInputControler().getInput() == 3)
+	if (this->getInputController().getInput() == 3)
 		this->fireMissile("4");
 }
 
