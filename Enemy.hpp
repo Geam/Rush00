@@ -13,7 +13,10 @@ class Enemy : public ACharacter
 
 		Pattern &		getPattern(void) const;
 
-		virtual void		destroy(void);
+		virtual void		collidesWith(Enemy & enemy);
+		virtual void		collidesWith(Enemy & enemy);
+		virtual void		collidesWith(Enemy & enemy);
+
 		virtual void		refresh(void);
 
 	protected:

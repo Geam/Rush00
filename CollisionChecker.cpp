@@ -25,19 +25,15 @@ void			CollisionChecker::checkCollision(AGameEntity & alist1, AGameEntity & alis
 	return ;
 }
 
-void			CollisionChecker::checkCollision(AList & alist1, AList  & alist2)
+void			CollisionChecker::checkCollision(AGameEntity & alist)
 {
-	std::cout << "Something's wrong in CollisionChecker." << std::endl;
-	return ;
-}
-
-void			CollisionChecker::checkCollision(AList & alist)
-{
-	AList *current = &alist;
+	AGameEntity *current = &alist;
 	if (!current || current->getNext() == NULL)
 		return ;
 	while (current = current->getNext())
+	{
 		CollisionChecker::checkCollision(alist, *(current->getNext()));
+	}
 	CollisionChecker::checkCollision(*(alist.getNext()));
 }
 

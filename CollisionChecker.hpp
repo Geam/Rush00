@@ -8,9 +8,8 @@
 class CollisionChecker
 {
 	public:
-		static void		checkCollision(AList & alist);
+		static void		checkCollision(AGameEntity & alist);
 		static void		checkCollision(AGameEntity & alist1, AGameEntity & alist2);
-		static void		checkCollision(AList & alist1, AList & alist2);
 
 	private:
 		CollisionChecker( void );
