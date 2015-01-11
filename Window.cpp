@@ -15,10 +15,18 @@
 #include <ncurses.h>
 #include "Window.hpp"
 
-Window::Window(int const x, int const y) : _clock(0), _x(x), _y(y)
+Window::Window(int const x, int const y, int const h, int const w) : _clock(0), _x(x), _y(y), _h(h), _w(w)
 {
-	std::cout << "[CONSTRUCT] Window "
-		<< this->getX() << " " << this->getY() << std::endl;
+	WINDOW	*win;
+
+	win = newwin(this->_h, this->_w, this->_y, this->_x);
+	wborder(win, '|','|','-','-','+','+','+','+');
+	wrefresh(win);
+
+//	std::cout << "[CONSTRUCT] Window "
+//		<< this->getX() << " " << this->getY() << std::endl;
+
+	this->_window = win;
 }
 
 Window::Window(Window const & src) : _clock(0)
@@ -31,6 +39,7 @@ Window::Window(Window const & src) : _clock(0)
 Window::~Window( void )
 {
 	std::cout << "[DESTRUCTOR] Window" << std::endl;
+	delwin(this->_window);
 	endwin();
 }
 
@@ -38,27 +47,11 @@ Window &			Window::operator=(Window const & rhs)
 {
 	this->_x = rhs.getX();
 	this->_y = rhs.getY();
+	this->_h = rhs.getH();
+	this->_w = rhs.getW();
 	return *this;
 }
 
-void				initColor()
-{
-	start_color();
-	init_pair(0, COLOR_WHITE, COLOR_BLACK);
-	init_pair(1, COLOR_RED, COLOR_BLACK);
-	init_pair(2, COLOR_BLUE, COLOR_BLACK);
-	init_pair(3, COLOR_GREEN, COLOR_BLACK);
-}
-
-void				Window::initWindow(void)
-{
-	initscr();
-	initColor();
-	cbreak();
-	noecho();
-	keypad(stdscr, true);
-	curs_set(0);
-}
 
 void				Window::refreshWindow(void)
 {
@@ -73,6 +66,18 @@ int					Window::getX(void) const
 int					Window::getY(void) const
 {
 	return this->_y;
+}
+
+int					Window::getH(void) const {
+	return this->_h;
+}
+
+int					Window::getW(void) const {
+	return this->_w;
+}
+
+WINDOW 				*Window::getWindow(void) const {
+	return this->_window;
 }
 
 Window::Window( void ) : _clock(0)
