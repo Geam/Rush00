@@ -19,6 +19,11 @@ Position &	Position::operator=(Position const & rhs)
 	return *this;
 }
 
+bool		Position::operator==(Position const & rhs) const
+{
+	return (this->_x == rhs._x && this->_y == rhs._y);
+}
+
 int			Position::getX(void) const{
 	return (this->_x);
 }
