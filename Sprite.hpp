@@ -10,13 +10,13 @@ class Sprite
 		~Sprite( void );
 		Sprite &	operator=(Sprite const & rhs);
 
-		std::string *	get(void);
+		std::string *	get(void) const;
 		int				getY(void) const;
 		std::string		toString(void) const;
 
 	private:
 		Sprite( void );
-		std::string		_sprite[];
+		std::string *	_sprite;
 		int				_y;
 };
 

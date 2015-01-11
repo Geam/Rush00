@@ -2,39 +2,33 @@
 #include <sstream>
 #include "Sprite.hpp"
 
-Sprite::Sprite(std::string sprite[], int y)
+Sprite::Sprite(std::string *sprite, int y) : _sprite(sprite), _y(y)
 {
-	for (int i = 0; i < y; i++)
-		this->_sprite[i] = sprite[i];
-	this->_y = y;
+	std::cout << "[CONSTRUCTED] Sprite" << std::endl;
+	return ;
 }
 
 Sprite::Sprite(Sprite const & src)
 {
-	std::string const *	tmp;
-
-	this->_y = src.getY();
-	tmp = src.get();
-	for (int i = 0; i < this->_y; i++)
-		this->_sprite[i] = tmp[i];
+	std::cout << "[CONSTRUCTED] Sprite" << std::endl;
+	*this = src;
+	return ;
 }
 
 Sprite::~Sprite( void )
 {
+	std::cout << "[DESTRUCTED] Sprite" << std::endl;
+	delete this->_sprite;
+	return ;
 }
 
 Sprite &	Sprite::operator=(Sprite const & rhs)
 {
-	std::string const *	tmp;
-
-	this->_y = rhs.getY();
-	tmp = rhs.get();
-	for (int i = 0; i < this->_y; i++)
-		this->_sprite[i] = tmp[i];
-	return *this;
+	this->_sprite = rhs._sprite;
+	this->_y = rhs._y;
 }
 
-std::string		*Sprite::get(void)
+std::string		*Sprite::get(void) const
 {
 	return this->_sprite;
 }
@@ -47,7 +41,7 @@ int				Sprite::getY(void) const
 std::string		Sprite::toString(void) const {
 	std::stringstream	buff;
 
-	buff << "Sprite size: " <<this->_y <<"and it looks like: " <<std::endl;
+	buff << "Sprite size: " <<this->_y <<"and it looks like: " << std::endl;
 	for (int i = 0; i < this->_y; i++)
 		buff << this->_sprite[i] <<std::endl;
 	return buff.str();
@@ -55,6 +49,8 @@ std::string		Sprite::toString(void) const {
 
 Sprite::Sprite( void )
 {
+	std::cout << "[DESTRUCTED] Sprite" << std::endl;
+	return ;
 }
 
 std::ostream &	operator<<(std::ostream & o, Sprite const & rhs) {
