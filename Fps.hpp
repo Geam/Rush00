@@ -23,7 +23,7 @@ class Fps
 		Interval		_m_fpsinterval;
 
 	private:
-		void	_log(std::string message, int color) const;
+		static void		_log(std::string message, int color);
 };
 
 std::ostream &		operator<<(std::ostream & o, Fps const & rhs);

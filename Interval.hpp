@@ -29,9 +29,9 @@ class Interval
 		unsigned int	value() const;
 
 	private:
-		unsigned int _initial;
+		unsigned int	_initial;
 
-		void	_log(std::string message, int color) const;
+		static void		_log(std::string message, int color);
 
 };
 
