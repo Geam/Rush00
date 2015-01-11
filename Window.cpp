@@ -20,7 +20,7 @@ Window::Window(int const x, int const y, int const h, int const w) : _clock(0), 
 	WINDOW	*win;
 
 	win = newwin(this->_h, this->_w, this->_y, this->_x);
-	wborder(win, '|','|','-','-','+','+','+','+');
+	wborder(win, '|','|','_','_','+','+','+','+');
 	wrefresh(win);
 
 //	std::cout << "[CONSTRUCT] Window "

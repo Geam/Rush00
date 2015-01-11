@@ -9,25 +9,28 @@
 /*   Updated: 2015/01/10 17:29:11 by tdieumeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "Fps.hpp"
+#include <Ncurses.h>
+#include <cstdlib>
+
+extern WINDOW *g_debug;
 
 Fps::Fps( void ) : _m_fps(0), _m_fpscount(0)
 {
-//	std::cout << "[CONSTRUCTED] FPS" << std::endl;
+	this->_log("[CONSTRUCTED] FPS...", 4);
 	return ;
 }
 
 Fps::Fps(Fps const & src)
 {
-//	std::cout << "[CONSTRUCTED] FPS" << std::endl;
+	this->_log("[CONSTRUCTED] FPS...", 4);
 	*this = src;
 	return ;
 }
 
 Fps::~Fps( void )
 {
-//	std::cout << "[DESTRUCTED] FPS" << std::endl;
+	this->_log("[DESTRUCTED] FPS...", 2);
 	return ;
 }
 
@@ -69,4 +72,23 @@ std::ostream &	operator<<(std::ostream & o, Fps const & rhs)
 {
 	o << rhs.toString();
 	return o;
+}
+
+
+void	Fps::_log(std::string message, int color) const {
+	int y, maxY, maxX;
+
+	maxX = getmaxx(g_debug);
+	maxY = getmaxy(g_debug);
+	y = getcury(g_debug);
+	if (y + 1 == maxY)
+		y = 1;
+	if (y == 0)
+		y++;
+	wattron(g_debug, COLOR_PAIR(color));
+	mvwhline(g_debug, y, 1, ' ', maxX - 10);
+	wmove(g_debug, y, 1);
+	mvwprintw(g_debug, y, 1, message.c_str());
+	wmove(g_debug, y + 1, 1);
+	wattroff(g_debug, COLOR_PAIR(color));
 }
