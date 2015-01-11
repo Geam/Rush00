@@ -14,20 +14,20 @@
 
 Fps::Fps( void ) : _m_fps(0), _m_fpscount(0)
 {
-	std::cout << "[CONSTRUCTED] FPS" << std::endl;
+//	std::cout << "[CONSTRUCTED] FPS" << std::endl;
 	return ;
 }
 
 Fps::Fps(Fps const & src)
 {
-	std::cout << "[CONSTRUCTED] FPS" << std::endl;
+//	std::cout << "[CONSTRUCTED] FPS" << std::endl;
 	*this = src;
 	return ;
 }
 
 Fps::~Fps( void )
 {
-	std::cout << "[DESTRUCTED] FPS" << std::endl;
+//	std::cout << "[DESTRUCTED] FPS" << std::endl;
 	return ;
 }
 

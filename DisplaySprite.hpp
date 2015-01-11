@@ -3,16 +3,13 @@
 
 #include <iostream>
 #include <ncurses.h>
+#include "Position.hpp"
 
 // temp
 struct Sprite {
     std::string     *tempT;
     int             tempW;
     int             tempH;
-};
-struct Pos {
-    int             tempX;
-    int             tempY;
 };
 // endtemp
 
@@ -29,10 +26,16 @@ public:
     // methods
     DisplaySprite  &operator=(DisplaySprite const &rhs);
 
-    void        display(Sprite s, Pos p, int color);
-    void        display(int c, Pos p, int color);
-    void        erase(Pos p);
-    void        erase(Sprite s, Pos p);
+    void        display(int c, Position p, int color);
+    void        display(int c, Position p, int color, WINDOW *window);
+    void        display(Sprite s, Position p, int color);
+    void        display(Sprite s, Position p, int color, WINDOW *window);
+    void        display(std::string str, Position p, int color);
+    void        display(std::string str, Position p, int color, WINDOW *window);
+    void        erase(Position p);
+    void        erase(Position p, WINDOW *window);
+    void        erase(Sprite s, Position p);
+    void        erase(Sprite s, Position p, WINDOW *window);
     static int  _instanceNb;
 
 private:
@@ -44,7 +47,6 @@ std::ostream    &operator<<(std::ostream &o, DisplaySprite const &i);
 
 #endif /* DISPLAY_SPRITE_H_H */
 
-//DisplaySprite(Sprite sprite, Pos xy)
 
 
 

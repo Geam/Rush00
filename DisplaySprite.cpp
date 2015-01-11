@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ncurses.h>
 #include "DisplaySprite.hpp"
+#include "Position.hpp"
 
 bool    DisplaySprite::_VERBOSE = false;
 int     DisplaySprite::_instanceNb = 0;
@@ -43,30 +44,74 @@ std::ostream    &operator<<(std::ostream &o, DisplaySprite const &i) {
 
 // methods
 
-void       DisplaySprite::erase(Sprite s, Pos p) {
+// erase polymorphic methods
+void       DisplaySprite::erase(Position p) {
+    attron(COLOR_PAIR(1));
+    mvaddch(p.getY(), p.getX(), ' ');
+    attroff(COLOR_PAIR(1));
+}
+
+void       DisplaySprite::erase(Position p, WINDOW *window) {
+    wattron(window, COLOR_PAIR(1));
+    mvwaddch(window, p.getY(), p.getX(), ' ');
+    wattroff(window, COLOR_PAIR(1));
+}
+
+void       DisplaySprite::erase(Sprite s, Position p) {
     attron(COLOR_PAIR(1));
     for (int i = 0; i < s.tempH; i++) {
-        mvprintw(p.tempY + i, p.tempX, s.tempT[i].c_str());
+        mvprintw(p.getY() + i, p.getX(), s.tempT[i].c_str());
     }
     attroff(COLOR_PAIR(1));
 }
 
-void       DisplaySprite::display(Sprite s, Pos p, int color) {
+void       DisplaySprite::erase(Sprite s, Position p, WINDOW *window) {
+    wattron(window, COLOR_PAIR(1));
+    for (int i = 0; i < s.tempH; i++) {
+        mvwprintw(window, p.getY() + i, p.getX(), s.tempT[i].c_str());
+    }
+    wattroff(window, COLOR_PAIR(1));
+}
+
+// display polymorphic methods
+
+void    DisplaySprite::display(int c, Position p, int color) {
+    attron(COLOR_PAIR(color));
+    mvaddch(p.getY(), p.getX(), c);
+    attroff(COLOR_PAIR(color));
+}
+
+void    DisplaySprite::display(int c, Position p, int color, WINDOW *window) {
+    wattron(window, COLOR_PAIR(color));
+    mvwaddch(window, p.getY(), p.getX(), c);
+    wattroff(window, COLOR_PAIR(color));
+}
+
+void       DisplaySprite::display(Sprite s, Position p, int color) {
     attron(COLOR_PAIR(color));
     for (int i = 0; i < s.tempH; i++) {
-        mvprintw(p.tempY + i, p.tempX, s.tempT[i].c_str());
+        mvprintw(p.getY() + i, p.getX(), s.tempT[i].c_str());
     }
     attroff(COLOR_PAIR(color));
 }
 
-void       DisplaySprite::erase(Pos p) {
-    attron(COLOR_PAIR(1));
-    mvaddch(p.tempY, p.tempX, ' ');
-    attroff(COLOR_PAIR(1));
+void       DisplaySprite::display(Sprite s, Position p, int color, WINDOW *window) {
+    wattron(window, COLOR_PAIR(color));
+    for (int i = 0; i < s.tempH; i++) {
+        mvwprintw(window, p.getY() + i, p.getX(), s.tempT[i].c_str());
+    }
+    wattroff(window, COLOR_PAIR(color));
 }
 
-void    DisplaySprite::display(int c, Pos p, int color) {
+void       DisplaySprite::display(std::string str, Position p, int color) {
     attron(COLOR_PAIR(color));
-    mvaddch(p.tempY, p.tempX, c);
+    mvprintw(p.getY(), p.getX(), str.c_str());
     attroff(COLOR_PAIR(color));
 }
+
+void       DisplaySprite::display(std::string str, Position p, int color, WINDOW *window) {
+    wattron(window, COLOR_PAIR(color));
+    mvwprintw(window, p.getY(), p.getX(), str.c_str());
+    wattroff(window, COLOR_PAIR(color));
+}
+

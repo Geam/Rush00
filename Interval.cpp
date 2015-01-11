@@ -15,20 +15,20 @@
 
 Interval::Interval( void ) : _initial(std::clock())
 {
-	std::cout << "[CONSTRUCT] Interval" << std::endl;
+//	std::cout << "[CONSTRUCT] Interval" << std::endl;
 	return ;
 }
 
 Interval::Interval(Interval const & src)
 {
-	std::cout << "[CONSTRUCT] Interval" << std::endl;
+//	std::cout << "[CONSTRUCT] Interval" << std::endl;
 	*this = src;
 	return ;
 }
 
 Interval::~Interval( void )
 {
-	std::cout << "[DESTRUCT] Interval" << std::endl;
+//	std::cout << "[DESTRUCT] Interval" << std::endl;
 	return ;
 }
 
