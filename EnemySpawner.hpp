@@ -4,11 +4,12 @@
 # include <string>
 # include <cstdlib>
 # include "Enemy.hpp"
+# include "Window.hpp"
 
 class EnemySpawner
 {
 	public:
-		EnemySpawner( void );
+		EnemySpawner( Window const & win );
 		EnemySpawner(EnemySpawner const & src);
 		~EnemySpawner( void );
 		EnemySpawner &	operator=(EnemySpawner const & rhs);
