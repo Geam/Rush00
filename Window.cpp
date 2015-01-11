@@ -79,7 +79,7 @@ void    initColors() {
 	// init default color - TODO: later create different games color profiles
 	init_color(COLOR_BLACK, 0, 0, 0);
 	init_color(COLOR_RED, 700, 0, 0);
-	init_color(COLOR_GREEN, 0, 0, 700);
+	init_color(COLOR_GREEN, 0, 700, 0);
 	init_color(COLOR_YELLOW, 700, 700, 0);
 	init_color(COLOR_BLUE, 0, 0, 700);
 	init_color(COLOR_MAGENTA, 700, 0, 700);
