@@ -4,7 +4,10 @@
 void			CollisionChecker::checkCollision(AGameEntity & alist1, AGameEntity & alist2)
 {
 	if (alist1.getPosition() == alist2.getPosition())
+	{
 		alist1.collidesWith(alist2);
+		alist2.collidesWith(alist1);
+	}
 	int x1 = alist1.getPosition().getX();
 	int y1 = alist1.getPosition().getY();
 	int x2 = alist2.getPosition().getX();
@@ -19,7 +22,10 @@ void			CollisionChecker::checkCollision(AGameEntity & alist1, AGameEntity & alis
 		|| (x2 >= x1 && x2 + w2 <= x1 + w1))
 		&& ((y2 >= y1 && y2 <= y1 + h1)
 		|| (y2 >= y1 && y2 + h2 <= y1 + h1)))
+	{
 		alist1.collidesWith(alist2);
+		alist2.collidesWith(alist1);
+	}
 	return ;
 }
 
@@ -28,7 +34,7 @@ void			CollisionChecker::checkCollision(AGameEntity & alist)
 	AGameEntity *current = &alist;
 	if (!current || current->getNext() == NULL)
 		return ;
-	while (current = current->getNext())
+	while ((current = current->getNext()))
 	{
 		CollisionChecker::checkCollision(alist, *(current->getNext()));
 	}
@@ -43,11 +49,13 @@ CollisionChecker::CollisionChecker( void )
 
 CollisionChecker::CollisionChecker(CollisionChecker const & src)
 {
+	*this = src;
 	return ;
 }
 
 CollisionChecker &	CollisionChecker::operator=(CollisionChecker const & rhs)
 {
+	(void)rhs;
 	return *this;
 }
 

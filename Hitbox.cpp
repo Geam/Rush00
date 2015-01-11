@@ -2,7 +2,8 @@
 #include <sstream>
 #include "Hitbox.hpp"
 
-Hitbox::Hitbox( void ) {}
+Hitbox::Hitbox( void ) : _wth(0), _hei(0)
+{}
 
 Hitbox::Hitbox(int w, int h ) : _wth(w), _hei(h) {
 }
@@ -23,9 +24,21 @@ int				Hitbox::getWidth() const
 	return this->_wth;
 }
 
+void			Hitbox::setWidth(int w)
+{
+	this->_wth = w;
+	return ;
+}
+
 int				Hitbox::getHeight() const
 {
 	return this->_hei;
+}
+
+void			Hitbox::setHeight(int h)
+{
+	this->_hei = h;
+	return ;
 }
 
 std::string		Hitbox::toString(void) const {

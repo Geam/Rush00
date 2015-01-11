@@ -1,7 +1,15 @@
 #include <iostream>
 #include "Obstacle.hpp"
 
-Obstacle::Obstacle(Obstacle const & src)
+Obstacle::Obstacle(int x, int y, int spe) : AGameEntity(x, y, spe)
+{
+	std::string tsprite[] = { "#" };
+	this->_hb.setWidth(0);
+	this->_hb.setHeight(0);
+	this->_sp.set(tsprite, 1);
+}
+
+Obstacle::Obstacle(Obstacle const & src) : AGameEntity(src)
 {
 	std::cout << "[CONSTRUCT] Obstacle" << std::endl;
 	*this = src;
@@ -16,6 +24,12 @@ Obstacle &		Obstacle::operator=(Obstacle const & rhs)
 {
 	AGameEntity::operator=(rhs);
 	return *this;
+}
+
+void			Obstacle::collidesWith(AGameEntity const & ge)
+{
+	(void)ge;
+	return ;
 }
 
 void			Obstacle::refresh(void)

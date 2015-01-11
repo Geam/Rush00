@@ -30,7 +30,7 @@ MoveController &	MoveController::operator=(MoveController const & rhs)
 
 std::string	MoveController::toString() const
 {
-
+	return "";
 }
 
 void				MoveController::moveLeft()
@@ -77,7 +77,7 @@ void				MoveController::move()
 	(this->*a[static_cast<int>(d)])();
 }
 
-MoveController::MoveController( void )
+MoveController::MoveController( void ) : _position(NULL), _pattern(NULL)
 {
 	return ;
 }

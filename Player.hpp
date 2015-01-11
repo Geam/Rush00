@@ -2,23 +2,23 @@
 # define PLAYER_HPP
 
 #include "ACharacter.hpp"
-#include "InputControler.hpp"
+#include "InputController.hpp"
 
 class Player : public ACharacter
 {
 	public:
+		Player(void);
 		Player(Player const & src);
 		~Player( void );
 		Player &	operator=(Player const & rhs);
 
-		virtual void	destroy(void);
 		virtual void	refresh(void);
 
-		InputControler	getInputControler(void);
+		InputController & getInputControler(void) const;
 
 	private:
-		InputControler	_controler;
-		Player(void);
+		InputController	_controler;
+		void			_getInput();
 };
 
 #endif /* PLAYER_HPP */

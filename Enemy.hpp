@@ -6,16 +6,12 @@
 class Enemy : public ACharacter
 {
 	public:
-		Enemy(int x, int y, std::string pattern, Sprite const & sprt);
+		Enemy(int x, int y, int frate, int speed, std::string pattern);
 		Enemy(Enemy const & src);
 		virtual ~Enemy( void );
 		Enemy &	operator=(Enemy const & rhs);
 
 		Pattern &		getPattern(void) const;
-
-		virtual void		collidesWith(Enemy & enemy);
-		virtual void		collidesWith(Enemy & enemy);
-		virtual void		collidesWith(Enemy & enemy);
 
 		virtual void		refresh(void);
 

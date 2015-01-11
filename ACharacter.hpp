@@ -7,12 +7,12 @@
 class ACharacter : public AGameEntity
 {
 	public:
-		ACharacter(int x, int y, int wdth, int hght, Sprite const & Sprite, int frate, int speed);
+		ACharacter(int x, int y, int frate, int speed);
 		ACharacter(ACharacter const & src);
 		virtual ~ACharacter( void );
 		ACharacter &	operator=(ACharacter const & rhs);
 
-		Missile &		fireMissile(std::string pattern);
+		virtual void	fireMissile(std::string pattern);
 		int				getFireRate(void) const;
 		int				getMaxFireRate(void) const;
 		int				getSpeed(void) const;

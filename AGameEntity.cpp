@@ -1,18 +1,18 @@
 #include "AGameEntity.hpp"
 
-AGameEntity::AGameEntity(int x, int y, int wdth, int hgth, int speed, Sprite const & sprite) :
-	_pos(Position(x, y)), _hb(Hitbox(wdth, hgth)), _sp(sprite), _speed(speed), _maxspeed(speed), _dead(false),
+AGameEntity::AGameEntity(int x, int y, int speed) : _speed(0), _maxspeed(speed), _dead(false),
 	_index(AGameEntity::_nb_inst++)
 {
+	this->_pos.update(x, y);
 	std::cout << "[CONSTRUCT] Game Entity" << std::endl;
 	AGameEntity::pushFront(this);
 	return ;
 }
 
-AGameEntity::AGameEntity(AGameEntity const & src) :
-	_pos(Position(src._pos)), _hb(Hitbox(src._hb)), _sp(src._sp), _speed(src._speed), _maxspeed(src._maxspeed), _dead(false), _index(AGameEntity::_nb_inst++)
+AGameEntity::AGameEntity(AGameEntity const & src) : _index(AGameEntity::_nb_inst++)
 {
 	std::cout << "[CONSTRUCT] Game Entity" << std::endl;
+	*this = src;
 	AGameEntity::pushFront(this);
 	return ;
 }
@@ -26,9 +26,6 @@ AGameEntity::~AGameEntity( void )
 
 AGameEntity &			AGameEntity::operator=(AGameEntity const & rhs)
 {
-	this->_pos = rhs._pos;
-	this->_hb = rhs._hb;
-	this->_sp = rhs._sp;
 	this->_dead = rhs._dead;
 	this->_speed = rhs._speed;
 	this->_maxspeed = rhs._maxspeed;
@@ -57,8 +54,8 @@ int						AGameEntity::getSpeed() const
 
 void					AGameEntity::collidesWith(AGameEntity & ge)
 {
+	(void)ge;
 	this->_dead = true;
-	ge._dead = true;
 }
 
 AGameEntity *			AGameEntity::getNext() const
@@ -74,6 +71,11 @@ AGameEntity *			AGameEntity::getPrevious() const
 AGameEntity *			AGameEntity::getHead()
 {
 	return AGameEntity::_head;
+}
+
+int						AGameEntity::isDead() const
+{
+	return this->_dead;
 }
 
 void				AGameEntity::pushFront(AGameEntity *alist)
@@ -119,4 +121,5 @@ std::ostream &			operator<<(std::ostream & o, AGameEntity const & rhs)
 	return o;
 }
 
-unsigned int _nb_inst = 0;
+unsigned int	_nb_inst = 0;
+AGameEntity		*_head = NULL;

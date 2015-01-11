@@ -2,12 +2,6 @@
 #include <sstream>
 #include "Sprite.hpp"
 
-Sprite::Sprite(std::string *sprite, int y) : _sprite(sprite), _y(y)
-{
-	std::cout << "[CONSTRUCTED] Sprite" << std::endl;
-	return ;
-}
-
 Sprite::Sprite(Sprite const & src)
 {
 	std::cout << "[CONSTRUCTED] Sprite" << std::endl;
@@ -18,7 +12,6 @@ Sprite::Sprite(Sprite const & src)
 Sprite::~Sprite( void )
 {
 	std::cout << "[DESTRUCTED] Sprite" << std::endl;
-	delete this->_sprite;
 	return ;
 }
 
@@ -26,9 +19,10 @@ Sprite &	Sprite::operator=(Sprite const & rhs)
 {
 	this->_sprite = rhs._sprite;
 	this->_y = rhs._y;
+	return *this;
 }
 
-std::string		*Sprite::get(void) const
+std::string const *Sprite::get(void) const
 {
 	return this->_sprite;
 }
@@ -36,6 +30,13 @@ std::string		*Sprite::get(void) const
 int				Sprite::getY(void) const
 {
 	return this->_y;
+}
+
+void			Sprite::set(std::string const sprite[], int y)
+{
+	this->_sprite = sprite;
+	this->_y = y;
+	return ;
 }
 
 std::string		Sprite::toString(void) const {
@@ -47,9 +48,9 @@ std::string		Sprite::toString(void) const {
 	return buff.str();
 }
 
-Sprite::Sprite( void )
+Sprite::Sprite( void ) : _sprite(NULL), _y(0)
 {
-	std::cout << "[DESTRUCTED] Sprite" << std::endl;
+	std::cout << "[CONSTRUCTED] Sprite" << std::endl;
 	return ;
 }
 

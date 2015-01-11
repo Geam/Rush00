@@ -1,11 +1,17 @@
 #include <iostream>
 #include "Enemy.hpp"
 
-Enemy::Enemy(int x, int y, std::string pattern, Sprite const & sprt) : ACharacter(x, y, 3, 5, sprt, 1, 2)
+Enemy::Enemy(int x, int y, int frate, int speed, std::string pattern) : ACharacter(x, y, frate, speed)
 {
+	const std::string tsprite[] = {
+		"-<{"
+	};
 	std::cout << "[CONSTRUCT] Enemy" << std::endl;
-	this->_pattern = Pattern(pattern);
+	this->_pattern.set(pattern);
 	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
+	this->_hb.setWidth(2);
+	this->_hb.setHeight(0);
+	this->_sp.set(tsprite, 1);
 	return;
 }
 
@@ -25,11 +31,7 @@ Enemy &	Enemy::operator=(Enemy const & rhs)
 {
 	this->ACharacter::operator=(rhs);
 	this->_pattern = rhs.getPattern();
-}
-
-void		Enemy::destroy(void)
-{
-	return;
+	return *this;
 }
 
 void		Enemy::refresh(void)

@@ -1,20 +1,18 @@
 
 #include "Missile.hpp"
 
-Missile::Missile(Position & pos, Hitbox hb, Sprite sp, Pattern pattern, int speed) : _pattern(pattern)
+Missile::Missile(int x, int y, int speed, std::string pattern) : AGameEntity(x, y, speed)
 {
-
-	this->_pos = pos;
-	this->_hb = hb;
-	this->_sp = sp;
-	this->_dead = false;
-	this->_speed = speed;
-	this->_maxspeed = speed;
+	std::string tsprite[1] = { "-" };
+	this->_pattern.set(pattern);
 	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
+	this->_hb.setWidth(0);
+	this->_hb.setHeight(0);
+	this->_sp.set(tsprite, 1);
 	return ;
 }
 
-Missile::Missile(Missile const & src) : _pattern(src.getPattern())
+Missile::Missile(Missile const & src) : AGameEntity(src)
 {
 	*this = src;
 	return ;

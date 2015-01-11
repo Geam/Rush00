@@ -8,7 +8,7 @@
 class Missile : public AGameEntity
 {
 	public:
-								Missile(Position & pos, Hitbox hb, Sprite sp, Pattern pattern, int speed);
+								Missile(int x, int y, int speed, std::string pattern);
 								Missile(Missile const & src);
 		virtual					~Missile( void );
 		Missile &				operator=(Missile const & rhs);
