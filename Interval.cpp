@@ -10,18 +10,49 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Interval.hpp"
+#include <ncurses.h>
 #include <ctime>
+#include "Interval.hpp"
+
+extern WINDOW *g_debug;
 
 Interval::Interval( void ) : _initial(std::clock())
 {
-//	std::cout << "[CONSTRUCT] Interval" << std::endl;
+	int y, maxY, maxX;
+
+	maxX = getmaxx(g_debug);
+	maxY = getmaxy(g_debug);
+	y = getcury(g_debug);
+	if (y + 1 == maxY)
+		y = 1;
+	if (y == 0)
+		y++;
+	wattron(g_debug, COLOR_PAIR(4));
+	mvwhline(g_debug, y, 1, ' ', maxX - 10);
+	wmove(g_debug, y, 1);
+	mvwprintw(g_debug, y, 1, "[CONSTRUCTED] Interval...");
+	wmove(g_debug, y + 1, 1);
+	wattroff(g_debug, COLOR_PAIR(4));
 	return ;
 }
 
 Interval::Interval(Interval const & src)
 {
-//	std::cout << "[CONSTRUCT] Interval" << std::endl;
+	int y, maxY, maxX;
+
+	maxY = getmaxy(g_debug);
+	maxX = getmaxx(g_debug);
+	y = getcury(g_debug);
+	if (y + 1 == maxY)
+		y = 1;
+	if (y == 0)
+		y++;
+	wattron(g_debug, COLOR_PAIR(4));
+	mvwhline(g_debug, y, 1, ' ', maxX - 10);
+	wmove(g_debug, y, 1);
+	mvwprintw(g_debug, y, 1, "[CONSTRUCTED] Interval...");
+	wmove(g_debug, y + 1, 1);
+	wattroff(g_debug, COLOR_PAIR(4));
 	*this = src;
 	return ;
 }

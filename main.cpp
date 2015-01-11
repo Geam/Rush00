@@ -7,6 +7,7 @@
 #include "Position.hpp"
 #include "DisplaySprite.hpp"
 
+WINDOW *g_debug = NULL;
 
 // enables to save the terminal current color and restore them later (using the boolean save)
 void    switchDefaultColors(bool save) {
@@ -76,6 +77,7 @@ void    setColors(void) {
 	init_pair(1, COLOR_BLACK, COLOR_BLACK);
 	init_pair(2, COLOR_RED, COLOR_BLACK);
 	init_pair(3, COLOR_BLACK, COLOR_MAGENTA);
+	init_pair(4, COLOR_GREEN, COLOR_BLACK);
 
 }
 
@@ -92,21 +94,26 @@ void				init(void)
 
 int					main(void)
 {
-	Interval			itv;
-	Fps					fps;
-	int					i;
-	std::stringstream	buff;
+	// Primary variables
 	DisplaySprite		displayService;
-	int 				row, col;
+	int					i, row, col;
+	std::stringstream	buff;
 
+	// Screen init
 	init();
 	getmaxyx(stdscr, col, row);
-	printw("%i/%i", col, row);
 
-	Window 				game(0, 0, col / 3 * 2, row);
-	displayService.display("Debug", Position(1, 0), 3, game.getWindow());
-	Window				debug(0, col / 3 * 2, col / 3, row);
+	// Windows variables
+	Window 				game(0, 0, col / 5 * 4, row);
+	Window				debug(0, col / 5 * 4, col / 5, row);
+	displayService.display("Game", Position(1, 0), 3, game.getWindow());
 	displayService.display("Debug", Position(1, 0), 3, debug.getWindow());
+
+	g_debug = debug.getWindow();
+
+	// Secondary variables
+	Fps					fps;
+	Interval			itv;
 
 	i = 0;
 	while (1)
@@ -117,9 +124,9 @@ int					main(void)
 		while (itv.value() < CLOCKS_PER_SEC / 60);
 		buff << "FPS: " << fps.get();
 		refresh();
-		displayService.display(buff.str(), Position(10, 2), 2, game.getWindow());
-		displayService.display("Welcome to our new brand game", Position(1, 1), 3, game.getWindow());
+		displayService.display(buff.str(), Position(row - 8, 1), 2, debug.getWindow());
 		wrefresh(game.getWindow());
+		wrefresh(debug.getWindow());
 		i++;
 		fps.update();
 		itv.refresh();
