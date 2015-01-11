@@ -10,6 +10,8 @@ class Position
 		~Position( void );
 		Position &	operator=(Position const & rhs);
 
+		bool		operator==(Position const & rhs) const;
+
 		int			getX() const;
 		int			getY() const;
 		void		update(int const x, int const y);

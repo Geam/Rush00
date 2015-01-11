@@ -4,11 +4,10 @@
 #include "Position.hpp"
 #include "Hitbox.hpp"
 #include "Sprite.hpp"
-#include "AList.hpp"
 #include <iostream>
 #include <sstream>
 
-class AGameEntity : public AList
+class AGameEntity
 {
 	public:
 		AGameEntity(int x, int y, int wdth, int hght, int speed, Sprite const & sprite);
@@ -23,22 +22,31 @@ class AGameEntity : public AList
 		int						getSpeed() const;
 
 		virtual void			refresh() = 0;
-		virtual void			destroy(void) = 0;
+		virtual void			collidesWith(AGameEntity & ge);
 
+		virtual AGameEntity		*getNext() const;
+		virtual AGameEntity		*getPrevious() const;
+		static AGameEntity		*getHead();
+		static void				pushFront(AGameEntity *alist);
+		void					deleteNode();
 		std::string				toString(void) const;
 
 	protected:
 		Position				_pos;
 		Hitbox					_hb;
 		Sprite					_sp;
+		AGameEntity				*_next;
+		AGameEntity				*_previous;
 		int						_dead;
 		int						_speed;
 		int						_maxspeed;
 		int						_index;
+		static AGameEntity		*_head;
 		AGameEntity( void );
 
 	private:
 		static unsigned int		_nb_inst;
+		static unsigned int		_nb_node;
 };
 
 std::ostream &					operator<<(std::ostream & o, AGameEntity const & rhs);

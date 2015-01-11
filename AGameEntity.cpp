@@ -5,6 +5,7 @@ AGameEntity::AGameEntity(int x, int y, int wdth, int hgth, int speed, Sprite con
 	_index(AGameEntity::_nb_inst++)
 {
 	std::cout << "[CONSTRUCT] Game Entity" << std::endl;
+	AGameEntity::pushFront(this);
 	return ;
 }
 
@@ -12,12 +13,14 @@ AGameEntity::AGameEntity(AGameEntity const & src) :
 	_pos(Position(src._pos)), _hb(Hitbox(src._hb)), _sp(src._sp), _speed(src._speed), _maxspeed(src._maxspeed), _dead(false), _index(AGameEntity::_nb_inst++)
 {
 	std::cout << "[CONSTRUCT] Game Entity" << std::endl;
+	AGameEntity::pushFront(this);
 	return ;
 }
 
 AGameEntity::~AGameEntity( void )
 {
 	std::cout << "[DESTRUCT] Game Entity" << std::endl;
+	deleteNode();
 	return ;
 }
 
@@ -50,6 +53,53 @@ Sprite const &			AGameEntity::getSprite(void) const
 int						AGameEntity::getSpeed() const
 {
 	return this->_speed;
+}
+
+void					AGameEntity::collidesWith(AGameEntity & ge)
+{
+	this->_dead = true;
+	ge._dead = true;
+}
+
+AGameEntity *			AGameEntity::getNext() const
+{
+	return this->_next;
+}
+
+AGameEntity *			AGameEntity::getPrevious() const
+{
+	return this->_previous;
+}
+
+AGameEntity *			AGameEntity::getHead()
+{
+	return AGameEntity::_head;
+}
+
+void				AGameEntity::pushFront(AGameEntity *alist)
+{
+	AGameEntity *save = AGameEntity::_head;
+	AGameEntity::_head = alist;
+	alist->_next = save;
+	if (save != NULL)
+		save->_previous = alist;
+}
+
+void				AGameEntity::deleteNode()
+{
+	if (this == AGameEntity::_head)
+	{
+		AGameEntity::_head = this->_next;
+		if (this->_next)
+			this->_next->_previous = NULL;
+	}
+	else
+	{
+		if (this->_previous)
+			this->_previous->_next = this->_next;
+		if (this->_next)
+			this->_next->_previous = this->_previous;
+	}
 }
 
 std::string				AGameEntity::toString(void) const
