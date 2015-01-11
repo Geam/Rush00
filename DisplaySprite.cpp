@@ -5,7 +5,7 @@
 
 bool    DisplaySprite::_VERBOSE = false;
 int     DisplaySprite::_instanceNb = 0;
-
+extern  WINDOW *g_debug;
 // TODO: pour l'instant les sprites sont simulés avec une struct ! Ne pas oublier de remplacer les variables temporaires.
 
 // constructor and destructor
@@ -98,9 +98,19 @@ void       DisplaySprite::display(Sprite s, Position p, int color) {
 }
 
 void       DisplaySprite::display(Sprite s, Position p, int color, WINDOW *window) {
+    int x;
+
+    x = getmaxx(window);
     wattron(window, COLOR_PAIR(color));
-    for (int i = 0; i < s.tempH; i++) {
-        mvwprintw(window, p.getY() + i, p.getX(), s.tempT[i].c_str());
+    if (p.getX() <= 0) {
+        for (int i = 0; i < s.tempH; i++) {
+            mvwprintw(window, p.getY() + i, p.getX() <= 1 ? 1 : p.getX(), s.tempT[i].substr(p.getX() * -1, 30).c_str());
+        }
+    }
+    else {
+        for (int i = 0; i < s.tempH; i++) {
+            mvwprintw(window, p.getY() + i, p.getX(), s.tempT[i].substr(0, x - p.getX() - 1).c_str());
+        }
     }
     wattroff(window, COLOR_PAIR(color));
 }

@@ -41,6 +41,7 @@ public:
 private:
 
     static bool _VERBOSE;
+
 };
 
 std::ostream    &operator<<(std::ostream &o, DisplaySprite const &i);
