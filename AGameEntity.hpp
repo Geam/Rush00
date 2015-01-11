@@ -23,7 +23,7 @@ class AGameEntity
 		int						isDead() const;
 
 		virtual void			refresh() = 0;
-		virtual void			collidesWith(AGameEntity & ge);
+		virtual void			collidesWith(AGameEntity const & ge);
 
 		virtual AGameEntity		*getNext() const;
 		virtual AGameEntity		*getPrevious() const;

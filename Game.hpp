@@ -3,12 +3,13 @@
 
 # include "Player.hpp"
 # include "CollisionChecker.hpp"
-//# include "EnemySpawner.hpp"
+# include "EnemySpawner.hpp"
 
 class Game
 {
 	public:
 		Game( void );
+		Game( Window const & win );
 		Game(Game const & src);
 		~Game( void );
 		Game &	operator=(Game const & rhs);
@@ -18,6 +19,9 @@ class Game
 	private:
 		void				_refreshGameEntity();
 		void				_deathCheck();
+		void				_isQuit();
+		void				_isOver();
+		void				_getInput();
 		Player				_player;
 		EnemySpawner		_spawner;
 

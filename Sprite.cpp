@@ -12,6 +12,7 @@ Sprite::Sprite(Sprite const & src)
 Sprite::~Sprite( void )
 {
 	std::cout << "[DESTRUCTED] Sprite" << std::endl;
+	delete [] this->_sprite;
 	return ;
 }
 

@@ -1,7 +1,6 @@
 #include <ncurses.h>
 #include "InputController.hpp"
 
-// {KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, ' '};
 InputController::InputController(InputController const & src)
 {
 	*this = src;
@@ -17,14 +16,25 @@ InputController &	InputController::operator=(InputController const & rhs)
 	return *this;
 }
 
-void				InputController::readInput(char ch) {
-	int keys[KEYS_LENGTH] = {KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, ' '};
+void				InputController::readInput(void)
+{
+	int				ch;
 
-	for (int i = 0; i < KEYS_LENGTH; i++) {
-		if (ch == keys[i]) {
-			// ici, déclencher les bons événements
-			break;
-		}
+	ch = getch();
+	switch (ch)
+	{
+		case 27:
+			this->_input = 0;
+			break ;
+		case ' ':
+			this->_input = 1;
+			break ;
+		case KEY_UP:
+			this->_input = 2;
+			break ;
+		case KEY_DOWN:
+			this->_input = 3;
+			break ;
 	}
 }
 

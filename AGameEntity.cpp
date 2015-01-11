@@ -52,7 +52,7 @@ int						AGameEntity::getSpeed() const
 	return this->_speed;
 }
 
-void					AGameEntity::collidesWith(AGameEntity & ge)
+void					AGameEntity::collidesWith(AGameEntity const & ge)
 {
 	(void)ge;
 	this->_dead = true;
