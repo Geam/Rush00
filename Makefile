@@ -10,6 +10,7 @@ NAME = ft_retro
 SRC = ACharacter.cpp \
 	AGameEntity.cpp \
 	CollisionChecker.cpp \
+	Console.cpp \
 	DisplaySprite.cpp \
 	Enemy.cpp \
 	EnemySpawner.cpp \
@@ -31,6 +32,7 @@ SRC = ACharacter.cpp \
 HEADER = ACharacter.hpp \
 	AGameEntity.hpp \
 	CollisionChecker.hpp \
+	Console.hpp \
 	DisplaySprite.hpp \
 	Enemy.hpp \
 	EnemySpawner.hpp \
