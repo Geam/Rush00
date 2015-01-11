@@ -3,7 +3,20 @@
 
 Missile::Missile(int x, int y, int speed, std::string pattern) : AGameEntity(x, y, speed)
 {
-	std::string tsprite[1] = { "-" };
+	std::string *tsprite = new std::string[1];
+	tsprite[0] = "-";
+	this->_pattern.set(pattern);
+	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
+	this->_hb.setWidth(0);
+	this->_hb.setHeight(0);
+	this->_sp.set(tsprite, 1);
+	return ;
+}
+
+Missile::Missile(Position pos, int speed, std::string pattern) : AGameEntity(pos.getX(), pos.getY(), speed)
+{
+	std::string *tsprite = new std::string[1];
+	tsprite[0] = "-";
 	this->_pattern.set(pattern);
 	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
 	this->_hb.setWidth(0);
@@ -31,7 +44,13 @@ Missile &			Missile::operator=(Missile const & rhs)
 
 void				Missile::refresh(void)
 {
-	this->_moveCtrl.move();
+	if (this->_speed == 0)
+	{
+		this->_moveCtrl.move();
+		this->_speed = this->_maxspeed;
+	}
+	else
+		this->_speed--;
 }
 
 void				Missile::destroy(void)

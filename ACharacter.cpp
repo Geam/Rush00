@@ -27,12 +27,6 @@ ACharacter &	ACharacter::operator=(ACharacter const & rhs)
 	return *this;
 }
 
-void			ACharacter::fireMissile(std::string pattern)
-{
-	(void)pattern;
-	return ;
-}
-
 int				ACharacter::getFireRate() const
 {
 	return this->_frate;

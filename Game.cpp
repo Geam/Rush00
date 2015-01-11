@@ -7,6 +7,13 @@ Game::Game( void )
 	return ;
 }
 
+Game::Game( Window const & win )
+{
+	this->_spawner.setWindow(win);
+	std::cout << "[CONSTRUCT] Game" << std::endl;
+	return ;
+}
+
 Game::Game(Game const & src)
 {
 	Console::log("[CONSTRUCT] Game", 4);
@@ -52,10 +59,41 @@ void				Game::_deathCheck()
 	}
 }
 
+void				Game::_isQuit()
+{
+	std::cout << "You left the game." << std::endl;
+	exit(0);
+}
+
+void				Game::_isOver()
+{
+	if (this->_player.isDead())
+	{
+		int			ch;
+		std::cout << "You died. Loser." << std::endl;
+		timeout(-1);
+		do
+		{
+			ch = getch();
+		}
+		while (ch != 10);
+		exit(0);
+	}
+}
+
+void				Game::_getInput()
+{
+	if (InputController::getInput() == 0)
+		this->_isQuit();
+}
+
 void				Game::refresh()
 {
+	this->_getInput();
+	this->_spawner.refresh();
 	this->_refreshGameEntity();
 	CollisionChecker::checkCollision(*AGameEntity::getHead());
+	this->_isOver();
 	this->_deathCheck();
 	return ;
 }

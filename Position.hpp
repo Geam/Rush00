@@ -10,6 +10,7 @@ class Position
 		Position(Position const & src);
 		~Position( void );
 		Position &	operator=(Position const & rhs);
+		Position	operator+(Position const & rhs);
 
 		bool		operator==(Position const & rhs) const;
 
