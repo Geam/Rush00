@@ -4,10 +4,11 @@
 #include "Position.hpp"
 #include "Hitbox.hpp"
 #include "Sprite.hpp"
+#include "AList.hpp"
 #include <iostream>
 #include <sstream>
 
-class AGameEntity
+class AGameEntity : public AList
 {
 	public:
 		AGameEntity(int x, int y, int wdth, int hght, int speed, int maxspeed, Sprite const & sprite);

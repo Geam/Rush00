@@ -5,7 +5,7 @@
 class Sprite
 {
 	public:
-		Sprite(std::string sprite[], int y);
+		Sprite(std::string *sprite, int y);
 		Sprite(Sprite const & src);
 		~Sprite( void );
 		Sprite &	operator=(Sprite const & rhs);
