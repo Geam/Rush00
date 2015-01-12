@@ -1,7 +1,7 @@
 
 #include "Missile.hpp"
 
-Missile::Missile(int x, int y, int speed, std::string pattern) : AGameEntity(x, y, speed)
+Missile::Missile(int x, int y, int speed, std::string pattern, e_type type) : AGameEntity(x, y, speed, type)
 {
 	Console::log("=== Missile ===", 4);
 	std::string *tsprite = new std::string[1];
@@ -14,7 +14,7 @@ Missile::Missile(int x, int y, int speed, std::string pattern) : AGameEntity(x, 
 	return ;
 }
 
-Missile::Missile(Position pos, int speed, std::string pattern) : AGameEntity(pos.getX(), pos.getY(), speed)
+Missile::Missile(Position pos, int speed, std::string pattern, e_type type) : AGameEntity(pos.getX(), pos.getY(), speed, type)
 {
 	Console::log("=== Missile ===", 4);
 	std::string *tsprite = new std::string[1];

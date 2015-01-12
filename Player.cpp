@@ -2,7 +2,7 @@
 #include "ACharacter.hpp"
 #include "Player.hpp"
 
-Player::Player() : ACharacter(5, 20, 0, 3)
+Player::Player() : ACharacter(5, 20, 0, 3, ALLY)
 {
 	std::string *tsprite = new std::string[5];
 
@@ -73,7 +73,7 @@ Missile *			Player::fireMissile(std::string pattern)
 	temp = NULL;
 	if (this->_frate <= 0)
 	{
-		temp = new Missile(this->_mslOrigin + this->_pos, 0, pattern);
+		temp = new Missile(this->_mslOrigin + this->_pos, 0, pattern, ALLY);
 		this->_frate = this->_maxfrate;
 	}
 	return (temp);

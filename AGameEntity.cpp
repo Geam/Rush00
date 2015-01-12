@@ -1,7 +1,6 @@
 #include "AGameEntity.hpp"
 
-AGameEntity::AGameEntity(int x, int y, int speed) : _speed(0), _maxspeed(speed), _dead(false),
-	_index(AGameEntity::_nb_inst++)
+AGameEntity::AGameEntity(int x, int y, int speed, e_type type) : _speed(0), _maxspeed(speed), _dead(false), _index(AGameEntity::_nb_inst++), _type(type)
 {
 	this->_pos.update(x, y);
 	Console::log("[CONSTRUCT] Game Entity", 4);
@@ -61,8 +60,11 @@ int						AGameEntity::getSpeed() const
 void					AGameEntity::collidesWith(AGameEntity const & ge)
 {
 	(void)ge;
-	this->_dead = true;
-	DisplaySprite::erase(this->_sp, this->_pos, this->_window);
+	if (this->_type != ge._type)
+	{
+		this->_dead = true;
+		DisplaySprite::erase(this->_sp, this->_pos, this->_window);
+	}
 }
 
 AGameEntity *			AGameEntity::getNext() const

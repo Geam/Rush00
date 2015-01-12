@@ -9,7 +9,7 @@
 class ACharacter : public AGameEntity
 {
 	public:
-		ACharacter(int x, int y, int frate, int speed);
+		ACharacter(int x, int y, int frate, int speed, e_type type);
 		ACharacter(ACharacter const & src);
 		virtual ~ACharacter( void );
 		ACharacter &	operator=(ACharacter const & rhs);

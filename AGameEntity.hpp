@@ -10,10 +10,12 @@
 # include "DisplaySprite.hpp"
 # include "Window.hpp"
 
+enum	e_type { ALLY = 0, ENEMY = 1, NEUTRAL = 2 };
+
 class AGameEntity
 {
 	public:
-		AGameEntity(int x, int y, int spe);
+		AGameEntity(int x, int y, int spe, e_type type);
 		AGameEntity(AGameEntity const & src);
 		virtual ~AGameEntity( void );
 
@@ -49,6 +51,7 @@ class AGameEntity
 		int						_maxspeed;
 		int						_dead;
 		int						_index;
+		e_type					_type;
 		static AGameEntity		*_head;
 		static WINDOW			*_window;
 		static int				_winX;

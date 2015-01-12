@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Enemy.hpp"
 
-Enemy::Enemy(int x, int y, int frate, int speed, std::string pattern) : ACharacter(x, y, frate, speed)
+Enemy::Enemy(int x, int y, int frate, int speed, std::string pattern) : ACharacter(x, y, frate, speed, ENEMY)
 {
 	std::string *tsprite = new std::string[3];
 	Console::log("[CONSTRUCT] Enemy", 4);
@@ -68,7 +68,7 @@ Missile *		Enemy::fireMissile(std::string pattern)
 	temp = NULL;
 	if (this->_frate <= 0)
 	{
-		temp = new Missile(this->_mslOrigin + this->_pos, 0, pattern);
+		temp = new Missile(this->_mslOrigin + this->_pos, 0, pattern, ENEMY);
 		this->_frate = this->_maxfrate;
 	}
 	this->_frate = (this->_frate - 1) <= 0 ? 0 : this->_frate - 1;

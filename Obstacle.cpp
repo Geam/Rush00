@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Obstacle.hpp"
 
-Obstacle::Obstacle(int x, int y, int spe) : AGameEntity(x, y, spe)
+Obstacle::Obstacle(int x, int y, int spe) : AGameEntity(x, y, spe, NEUTRAL)
 {
 	std::string tsprite[] = { "#" };
 	this->_hb.setWidth(0);
