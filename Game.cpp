@@ -37,6 +37,7 @@ void				Game::_refreshGameEntity()
 	AGameEntity		*current;
 
 	current = AGameEntity::getHead();
+	(void)current;
 	while (current)
 	{
 		current->refresh();

@@ -8,7 +8,7 @@ EnemySpawner::EnemySpawner( void ) : _pattern(NULL)
 
 	tpattern[0] = "3";
 	this->_pattern = tpattern;
-	std::cout << "[CONSTRUCT] EnemySpawner" << std::endl;
+	Console::log("[CONSTRUCT] EnemySpawner", 4);
 	return ;
 }
 
@@ -20,7 +20,7 @@ EnemySpawner::EnemySpawner(EnemySpawner const & src)
 
 EnemySpawner::~EnemySpawner( void )
 {
-	std::cout << "[DESTRUCT] EnemySpawner" << std::endl;
+	Console::log("[DESTRUCT] EnemySpawner", 4);
 	delete [] this->_pattern;
 }
 

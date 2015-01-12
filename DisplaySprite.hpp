@@ -19,16 +19,16 @@ public:
     // methods
     DisplaySprite  &operator=(DisplaySprite const &rhs);
 
-    static void        display(int c, Position p, int color);
-    static void        display(int c, Position p, int color, WINDOW *window);
-    static void        display(Sprite s, Position p, int color);
-    static void        display(Sprite s, Position p, int color, WINDOW *window);
-    static void        display(std::string str, Position p, int color);
-    static void        display(std::string str, Position p, int color, WINDOW *window);
-    static void        erase(Position p);
-    static void        erase(Position p, WINDOW *window);
-    static void        erase(Sprite s, Position p);
-    static void        erase(Sprite s, Position p, WINDOW *window);
+    static void        display(int c, Position const & p, int color);
+    static void        display(int c, Position const & p, int color, WINDOW *window);
+    static void        display(Sprite const & s, Position const & p, int color);
+    static void        display(Sprite const & s, Position const & p, int color, WINDOW *window);
+    static void        display(std::string str, Position const & p, int color);
+    static void        display(std::string str, Position const & p, int color, WINDOW *window);
+    static void        erase(Position const & p);
+    static void        erase(Position const & p, WINDOW *window);
+    static void        erase(Sprite const & s, Position const & p);
+    static void        erase(Sprite const & s, Position const & p, WINDOW *window);
     static int  _instanceNb;
 
 private:

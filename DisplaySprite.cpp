@@ -47,19 +47,19 @@ std::ostream    &operator<<(std::ostream &o, DisplaySprite const &i) {
 // methods
 
 // erase polymorphic methods
-void       DisplaySprite::erase(Position p) {
+void       DisplaySprite::erase(Position const & p) {
     attron(COLOR_PAIR(1));
     mvaddch(p.getY(), p.getX(), ' ');
     attroff(COLOR_PAIR(1));
 }
 
-void       DisplaySprite::erase(Position p, WINDOW *window) {
+void       DisplaySprite::erase(Position const & p, WINDOW *window) {
     wattron(window, COLOR_PAIR(1));
     mvwaddch(window, p.getY(), p.getX(), ' ');
     wattroff(window, COLOR_PAIR(1));
 }
 
-void       DisplaySprite::erase(Sprite s, Position p) {
+void       DisplaySprite::erase(Sprite const & s, Position const & p) {
     attron(COLOR_PAIR(1));
     for (int i = 0; i < s.getY(); i++) {
         mvprintw(p.getY() + i, p.getX(), s.get()[i].c_str());
@@ -67,7 +67,7 @@ void       DisplaySprite::erase(Sprite s, Position p) {
     attroff(COLOR_PAIR(1));
 }
 
-void       DisplaySprite::erase(Sprite s, Position p, WINDOW *window) {
+void       DisplaySprite::erase(Sprite const & s, Position const & p, WINDOW *window) {
     wattron(window, COLOR_PAIR(1));
     for (int i = 0; i < s.getY(); i++) {
         mvwprintw(window, p.getY() + i, p.getX(), s.get()[i].c_str());
@@ -77,19 +77,19 @@ void       DisplaySprite::erase(Sprite s, Position p, WINDOW *window) {
 
 // display polymorphic methods
 
-void    DisplaySprite::display(int c, Position p, int color) {
+void    DisplaySprite::display(int c, Position const & p, int color) {
     attron(COLOR_PAIR(color));
     mvaddch(p.getY(), p.getX(), c);
     attroff(COLOR_PAIR(color));
 }
 
-void    DisplaySprite::display(int c, Position p, int color, WINDOW *window) {
+void    DisplaySprite::display(int c, Position const & p, int color, WINDOW *window) {
     wattron(window, COLOR_PAIR(color));
     mvwaddch(window, p.getY(), p.getX(), c);
     wattroff(window, COLOR_PAIR(color));
 }
 
-void       DisplaySprite::display(Sprite s, Position p, int color) {
+void       DisplaySprite::display(Sprite const & s, Position const & p, int color) {
     attron(COLOR_PAIR(color));
     for (int i = 0; i < s.getY(); i++) {
         mvprintw(p.getY() + i, p.getX(), s.get()[i].c_str());
@@ -97,7 +97,7 @@ void       DisplaySprite::display(Sprite s, Position p, int color) {
     attroff(COLOR_PAIR(color));
 }
 
-void       DisplaySprite::display(Sprite s, Position p, int color, WINDOW *window) {
+void       DisplaySprite::display(Sprite const & s, Position const & p, int color, WINDOW *window) {
     int x;
 
     x = getmaxx(window);
@@ -115,13 +115,13 @@ void       DisplaySprite::display(Sprite s, Position p, int color, WINDOW *windo
     wattroff(window, COLOR_PAIR(color));
 }
 
-void       DisplaySprite::display(std::string str, Position p, int color) {
+void       DisplaySprite::display(std::string str, Position const & p, int color) {
     attron(COLOR_PAIR(color));
     mvprintw(p.getY(), p.getX(), str.c_str());
     attroff(COLOR_PAIR(color));
 }
 
-void       DisplaySprite::display(std::string str, Position p, int color, WINDOW *window) {
+void       DisplaySprite::display(std::string str, Position const & p, int color, WINDOW *window) {
     wattron(window, COLOR_PAIR(color));
     mvwprintw(window, p.getY(), p.getX(), str.c_str());
     wattroff(window, COLOR_PAIR(color));

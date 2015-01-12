@@ -2,6 +2,21 @@
 #include "ACharacter.hpp"
 #include "Player.hpp"
 
+Player::Player() : ACharacter(3, 0, 3, 3)
+{
+	std::string *tsprite = new std::string[3];
+
+	tsprite[0] = "- ";
+	tsprite[1] = "}>";
+	tsprite[2] = "- ";
+	this->_hb.setWidth(1);
+	this->_hb.setWidth(1);
+	this->_hb.setWidth(1);
+	this->_hb.setHeight(2);
+	this->_sp.set(tsprite, 3);
+	this->_mslOrigin.update(this->_hb.getWidth() + 1, this->_hb.getHeight() / 2 + 1);
+}
+
 Player::Player(Player const & src) : ACharacter(src)
 {
 	*this = src;
@@ -60,13 +75,3 @@ void			Player::fireMissile(std::string pattern)
 		this->_frate--;
 }
 
-Player::Player() : ACharacter(0, 0, 3, 3)
-{
-	const std::string tsprite[] = {
-		"- ", "}>", "- ",
-	};
-	this->_hb.setWidth(1);
-	this->_hb.setHeight(2);
-	this->_sp.set(tsprite, 3);
-	this->_mslOrigin.update(this->_hb.getWidth() + 1, this->_hb.getHeight() / 2 + 1);
-}

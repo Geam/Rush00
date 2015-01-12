@@ -88,6 +88,7 @@ void				init(void)
 	setColors();
 	cbreak(); // or raw() of we want to catch all inputs including ctr-c, etc.
 	noecho();
+	nodelay(stdscr, true);
 	keypad(stdscr, true);
 	curs_set(0);
 	refresh();
