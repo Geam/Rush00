@@ -71,3 +71,8 @@ fclean: clean
 	@$(RM) -f $(NAME)
 
 re: fclean all
+
+test:
+	@echo $(SRC)
+	@echo $(OFILES)
+	@echo $(HEADER)

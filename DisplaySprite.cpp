@@ -5,8 +5,6 @@
 
 bool    DisplaySprite::_VERBOSE = false;
 int     DisplaySprite::_instanceNb = 0;
-extern  WINDOW *g_debug;
-// TODO: pour l'instant les sprites sont simulés avec une struct ! Ne pas oublier de remplacer les variables temporaires.
 
 // constructor and destructor
 DisplaySprite::DisplaySprite(void) {
@@ -68,11 +66,21 @@ void       DisplaySprite::erase(Sprite const & s, Position const & p) {
 }
 
 void       DisplaySprite::erase(Sprite const & s, Position const & p, WINDOW *window) {
-    wattron(window, COLOR_PAIR(1));
-    for (int i = 0; i < s.getY(); i++) {
-        mvwprintw(window, p.getY() + i, p.getX(), s.get()[i].c_str());
-    }
-    wattroff(window, COLOR_PAIR(1));
+	wattron(window, COLOR_PAIR(1));
+    int x = getmaxx(window);
+	if (p.getX() <= 0) {
+		for (int i = 0; i < s.getY(); i++) {
+			if ((p.getX() * - 1) <= (int)s.get()[i].length())
+				mvwprintw(window, p.getY() + i, p.getX() <= 1 ? 1 : p.getX(), s.get()[i].substr(p.getX() * -1, 30).c_str());
+		}
+	}
+	else
+	{
+		for (int i = 0; i < s.getY(); i++) {
+            mvwprintw(window, p.getY() + i, p.getX(), s.get()[i].substr(0, x - p.getX() - 1).c_str());
+		}
+	}
+	wattroff(window, COLOR_PAIR(1));
 }
 
 // display polymorphic methods
