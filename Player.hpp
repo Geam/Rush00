@@ -13,11 +13,12 @@ class Player : public ACharacter
 		Player &					operator=(Player const & rhs);
 
 		virtual void				refresh(void);
-		virtual void				fireMissile(std::string pattern);
+		virtual Missile *			fireMissile(std::string pattern);
 
 	private:
 		InputController				_controller;
 		bool						_getInput();
+		int							_applyInput(int x, int y);
 };
 
 #endif /* PLAYER_HPP */

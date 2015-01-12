@@ -17,6 +17,7 @@ class Missile : public AGameEntity
 		virtual void			refresh(void);
 		virtual void			destroy(void);
 
+		void					_checkOutOfBound();
 		Pattern	const &			getPattern( void ) const;
 
 	protected:

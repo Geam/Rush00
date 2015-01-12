@@ -29,11 +29,11 @@ public:
     static void        erase(Position const & p, WINDOW *window);
     static void        erase(Sprite const & s, Position const & p);
     static void        erase(Sprite const & s, Position const & p, WINDOW *window);
-    static int  _instanceNb;
+    static int			_instanceNb;
 
 private:
 
-    static bool _VERBOSE;
+    static bool 		_VERBOSE;
 
 };
 

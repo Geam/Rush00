@@ -62,11 +62,22 @@ void					AGameEntity::collidesWith(AGameEntity const & ge)
 {
 	(void)ge;
 	this->_dead = true;
+	DisplaySprite::erase(this->_sp, this->_pos, this->_window);
 }
 
 AGameEntity *			AGameEntity::getNext() const
 {
 	return this->_next;
+}
+
+int						AGameEntity::getWinY()
+{
+	return AGameEntity::_winY;
+}
+
+int						AGameEntity::getWinX()
+{
+	return AGameEntity::_winX;
 }
 
 AGameEntity *			AGameEntity::getPrevious() const
@@ -91,6 +102,12 @@ void				AGameEntity::pushFront(AGameEntity *alist)
 	alist->_next = save;
 	if (save != NULL)
 		save->_previous = alist;
+}
+
+void				AGameEntity::setWindow(Window const & window)
+{
+	AGameEntity::_winX = window.getW();
+	AGameEntity::_winY = window.getH();
 }
 
 void				AGameEntity::setWindow(WINDOW *window)
@@ -132,6 +149,8 @@ std::ostream &			operator<<(std::ostream & o, AGameEntity const & rhs)
 	return o;
 }
 
+int				AGameEntity::_winX = 0;
+int				AGameEntity::_winY = 0;
 unsigned int	AGameEntity::_nb_inst = 0;
 AGameEntity		*AGameEntity::_head = NULL;
 WINDOW			*AGameEntity::_window = NULL;

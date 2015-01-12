@@ -2,19 +2,19 @@
 #include "ACharacter.hpp"
 #include "Player.hpp"
 
-Player::Player() : ACharacter(3, 0, 3, 3)
+Player::Player() : ACharacter(5, 20, 3, 3)
 {
-	std::string *tsprite = new std::string[3];
+	std::string *tsprite = new std::string[5];
 
-	tsprite[0] = "- ";
-	tsprite[1] = "}>";
-	tsprite[2] = "- ";
-	this->_hb.setWidth(1);
-	this->_hb.setWidth(1);
-	this->_hb.setWidth(1);
-	this->_hb.setHeight(2);
-	this->_sp.set(tsprite, 3);
-	this->_mslOrigin.update(this->_hb.getWidth() + 1, this->_hb.getHeight() / 2 + 1);
+	tsprite[0] = "/---\\";
+	tsprite[1] = "  |  ";
+	tsprite[2] = " (o) ";
+	tsprite[3] = "  |  ";
+	tsprite[4] = "\\---/";
+	this->_hb.setWidth(2);
+	this->_hb.setHeight(4);
+	this->_sp.set(tsprite, 5);
+	this->_mslOrigin.update(this->_hb.getWidth() + 1, this->_hb.getHeight() / 2);
 }
 
 Player::Player(Player const & src) : ACharacter(src)
@@ -36,29 +36,13 @@ Player &		Player::operator=(Player const & rhs)
 
 bool			Player::_getInput(void)
 {
-	int			thisx;
-	int			thisy;
 	int			ch = getch();
 
-	thisx = this->_pos.getX();
-	thisy = this->_pos.getY();
 	if (ch == KEY_UP)
-	{
-		thisy -= 1;
-		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
-		this->_pos.update(thisx, thisy);
-		DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
-		return true;
-	}
-	if (ch == KEY_DOWN)
-	{
-		thisy += 1;
-		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
-		this->_pos.update(thisx, thisy);
-		DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
-		return true;
-	}
-	if (ch == ' ')
+		return this->_applyInput(0, -1);
+	else if (ch == KEY_DOWN)
+		return this->_applyInput(0, 1);
+	else if (ch == ' ')
 	{
 		this->fireMissile("4");
 		return true;
@@ -68,19 +52,37 @@ bool			Player::_getInput(void)
 
 void			Player::refresh(void)
 {
+	DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
 	if (this->_getInput() && this->_speed == 0)
 	{
 		this->_speed = this->_maxspeed;
 	}
 	else
 		this->_speed = (this->_speed - 1) <= 0 ? 0 : this->_speed - 1;
+	this->_frate = (this->_frate - 1) <= 0 ? 0 : this->_frate - 1;
 }
 
-void			Player::fireMissile(std::string pattern)
+Missile *			Player::fireMissile(std::string pattern)
 {
-	if (this->_frate == 0)
-		Missile(this->_mslOrigin + this->_pos, 0, pattern);
-	else
-		this->_frate--;
+	Missile *	temp;
+
+	temp = NULL;
+	if (this->_frate <= 0)
+	{
+		temp = new Missile(this->_mslOrigin + this->_pos, 0, pattern);
+		this->_frate = this->_maxfrate;
+	}
+	return (temp);
 }
 
+int					Player::_applyInput(int x, int y)
+{
+	DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
+	if (!(this->_pos.getY() + y <= 0
+			|| this->_pos.getY() + y + this->_hb.getHeight() + 1 >= AGameEntity::_winY
+			|| this->_pos.getX() + x <= 0
+			|| this->_pos.getX() + x + this->_hb.getWidth() + 1 >= AGameEntity::_winX))
+		this->_pos.update(this->_pos.getX() + x, this->_pos.getY() + y);
+	DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
+	return true;
+}

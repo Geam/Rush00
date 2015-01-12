@@ -8,6 +8,7 @@
 # include "Hitbox.hpp"
 # include "Sprite.hpp"
 # include "DisplaySprite.hpp"
+# include "Window.hpp"
 
 class AGameEntity
 {
@@ -30,8 +31,11 @@ class AGameEntity
 		virtual AGameEntity		*getNext() const;
 		virtual AGameEntity		*getPrevious() const;
 		static AGameEntity		*getHead();
+		static int				getWinX();
+		static int				getWinY();
 		static void				pushFront(AGameEntity *alist);
 		static void				setWindow(WINDOW *window);
+		static void				setWindow(Window const & window);
 		void					deleteNode();
 		std::string				toString(void) const;
 
@@ -47,6 +51,8 @@ class AGameEntity
 		int						_index;
 		static AGameEntity		*_head;
 		static WINDOW			*_window;
+		static int				_winX;
+		static int				_winY;
 		AGameEntity( void );
 
 	private:

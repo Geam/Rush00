@@ -3,14 +3,16 @@
 
 Enemy::Enemy(int x, int y, int frate, int speed, std::string pattern) : ACharacter(x, y, frate, speed)
 {
-	std::string *tsprite = new std::string[1];
+	std::string *tsprite = new std::string[3];
 	Console::log("[CONSTRUCT] Enemy", 4);
-	tsprite[0] = "<{";
+	tsprite[0] = " ./H";
+	tsprite[1] = "<HHH";
+	tsprite[2] = " .\\H";
 	this->_pattern.set(pattern);
 	this->_moveCtrl = MoveController(this->_pos, this->_pattern);
-	this->_hb.setWidth(2);
-	this->_hb.setHeight(0);
-	this->_sp.set(tsprite, 1);
+	this->_hb.setWidth(3);
+	this->_hb.setHeight(2);
+	this->_sp.set(tsprite, 3);
 	this->_mslOrigin.update(this->_hb.getWidth() + 1, this->_hb.getHeight() / 2 + 1);
 	Enemy::enemyCount++;
 	return;
@@ -58,12 +60,16 @@ void		Enemy::refresh(void)
 		this->_speed--;
 }
 
-void		Enemy::fireMissile(std::string pattern)
+Missile *		Enemy::fireMissile(std::string pattern)
 {
+	Missile *	temp;
+
+	temp = NULL;
 	if (this->_frate == 0)
-		Missile(this->_mslOrigin + this->_pos, 0, pattern);
+		temp = new Missile(this->_mslOrigin + this->_pos, 0, pattern);
 	else
 		this->_frate--;
+	return (temp);
 }
 
 Enemy::Enemy(void)

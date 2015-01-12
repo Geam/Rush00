@@ -10,6 +10,7 @@ Game::Game( void )
 Game::Game( Window const & win )
 {
 	this->_spawner.setWindow(win);
+	AGameEntity::setWindow(win);
 	Console::log("[CONSTRUCT] Game", 4);
 	return ;
 }
