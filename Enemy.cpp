@@ -37,14 +37,22 @@ Enemy &	Enemy::operator=(Enemy const & rhs)
 	return *this;
 }
 
+void		Enemy::_checkOutOfBound()
+{
+	if (this->_pos.getX() <= -3)
+		this->_dead = true;
+}
+
 void		Enemy::refresh(void)
 {
 	if (this->_speed == 0)
 	{
 		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
 		this->_moveCtrl.move();
+		this->_checkOutOfBound();
 		this->_speed = this->_maxspeed;
-		DisplaySprite::display(this->_sp, this->_pos, 2,AGameEntity::_window);
+		if (!this->_dead)
+			DisplaySprite::display(this->_sp, this->_pos, 2,AGameEntity::_window);
 	}
 	else
 		this->_speed--;

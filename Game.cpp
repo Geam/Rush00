@@ -95,7 +95,7 @@ void				Game::refresh()
 	this->_refreshGameEntity();
 //	CollisionChecker::checkCollision(*AGameEntity::getHead());
 //	this->_isOver();
-//	this->_deathCheck();
+	this->_deathCheck();
 	return ;
 }
 

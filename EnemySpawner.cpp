@@ -1,7 +1,7 @@
 
 #include "EnemySpawner.hpp"
 
-EnemySpawner::EnemySpawner( void ) : _pattern(NULL)
+EnemySpawner::EnemySpawner( void ) : _speed(0), _maxspeed(10), _pattern(NULL)
 {
 	std::string		*tpattern = new std::string[1];
 	std::srand(time(0));
@@ -47,9 +47,9 @@ Enemy const &		EnemySpawner::refresh(void)
 	if (this->_speed == 0)
 	{
 		this->_speed = this->_maxspeed;
-		if (Enemy::enemyCount < 10)
+		if (Enemy::enemyCount < 30)
 		{
-			tmp = new Enemy(this->_winwdth, (std::rand() %
+			tmp = new Enemy(this->_winwdth - 5, (std::rand() %
 			(this->_winhgt - 2)) + 1, 10, 2, "3");
 		}
 	}
