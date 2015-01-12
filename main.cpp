@@ -6,6 +6,8 @@
 #include "Fps.hpp"
 #include "Position.hpp"
 #include "DisplaySprite.hpp"
+#include "AGameEntity.hpp"
+#include "Game.hpp"
 
 // enables to save the terminal current color and restore them later (using the boolean save)
 void    switchDefaultColors(bool save) {
@@ -94,7 +96,6 @@ void				init(void)
 int					main(void)
 {
 	// Primary variables
-	DisplaySprite		displayService;
 	int					i, row, col;
 	std::stringstream	buff;
 
@@ -103,10 +104,13 @@ int					main(void)
 	getmaxyx(stdscr, col, row);
 
 	// Windows variables
-	Window 				game(0, 0, col / 5 * 4, row);
+	Window 				gamew(0, 0, col / 5 * 4, row);
 	Window				debug(0, col / 5 * 4, col / 5, row);
-	displayService.display("Game", Position(1, 0), 3, game.getWindow());
-	displayService.display("Debug", Position(1, 0), 3, debug.getWindow());
+	Game				game(gamew);
+	DisplaySprite::display("game", Position(1, 0), 3, gamew.getWindow());
+	DisplaySprite::display("Debug", Position(1, 0), 3, debug.getWindow());
+
+	AGameEntity::setWindow(gamew.getWindow());
 
 	Console console(debug.getWindow());
 
@@ -115,48 +119,18 @@ int					main(void)
 	Interval			itv;
 
 	i = 0;
+	gamew.refreshWindow();
 	while (1)
 	{
 		buff.str(std::string());
 		buff.clear();
-		game.refreshWindow();
 		while (itv.value() < CLOCKS_PER_SEC / 60);
 		buff << "FPS: " << fps.get();
-		refresh();
-		displayService.display(buff.str(), Position(row - 8, 1), 2, debug.getWindow());
-
-		Sprite          s;
-		std::string     str[] = {
-				"     *    ",
-				"    **    ",
-				"   ****** ",
-				"  ** **** ",
-				" **  *    ",
-				"*    *    ",
-				"     **   ",
-				"     **   ",
-				"*    *    ",
-				" **  *    ",
-				"  ** **** ",
-				"   ****** ",
-				"    **    ",
-				"     *    "
-		};
-		s.tempT = str;
-		s.tempH = 14;
-		s.tempW = 10;
-		(void) s;
-//		for (int k = 0; k < 170; k++) {
-//			displayService.display(s, Position(160 - k, 15), 2, game.getWindow());
-//			wrefresh(game.getWindow());
-//			getch();
-//		}
-
-
-
-		wrefresh(game.getWindow());
-		wrefresh(debug.getWindow());
+		DisplaySprite::display(buff.str(), Position(row - 8, 1), 2, debug.getWindow());
 		i++;
+		game.refresh();
+		gamew.refreshWindow();
+		debug.refreshWindow();
 		fps.update();
 		itv.refresh();
 	}

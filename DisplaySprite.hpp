@@ -1,17 +1,10 @@
 #ifndef DISPLAY_SPRITE_H_H
 # define DISPLAY_SPRITE_H_H
 
-#include <iostream>
-#include <ncurses.h>
-#include "Position.hpp"
-
-// temp
-struct Sprite {
-    std::string     *tempT;
-    int             tempW;
-    int             tempH;
-};
-// endtemp
+# include <iostream>
+# include <ncurses.h>
+# include "Position.hpp"
+# include "Sprite.hpp"
 
 class DisplaySprite {
 public:
@@ -26,16 +19,16 @@ public:
     // methods
     DisplaySprite  &operator=(DisplaySprite const &rhs);
 
-    void        display(int c, Position p, int color);
-    void        display(int c, Position p, int color, WINDOW *window);
-    void        display(Sprite s, Position p, int color);
-    void        display(Sprite s, Position p, int color, WINDOW *window);
-    void        display(std::string str, Position p, int color);
-    void        display(std::string str, Position p, int color, WINDOW *window);
-    void        erase(Position p);
-    void        erase(Position p, WINDOW *window);
-    void        erase(Sprite s, Position p);
-    void        erase(Sprite s, Position p, WINDOW *window);
+    static void        display(int c, Position p, int color);
+    static void        display(int c, Position p, int color, WINDOW *window);
+    static void        display(Sprite s, Position p, int color);
+    static void        display(Sprite s, Position p, int color, WINDOW *window);
+    static void        display(std::string str, Position p, int color);
+    static void        display(std::string str, Position p, int color, WINDOW *window);
+    static void        erase(Position p);
+    static void        erase(Position p, WINDOW *window);
+    static void        erase(Sprite s, Position p);
+    static void        erase(Sprite s, Position p, WINDOW *window);
     static int  _instanceNb;
 
 private:

@@ -6,7 +6,7 @@
 /*   By: tdieumeg <tdieumeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:37:14 by tdieumeg          #+#    #+#             */
-/*   Updated: 2015/01/10 17:37:57 by tdieumeg         ###   ########.fr       */
+/*   Updated: 2015/01/12 00:06:16 by frale-co         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ Window &			Window::operator=(Window const & rhs)
 
 void				Window::refreshWindow(void)
 {
-	refresh();
+	wrefresh(this->_window);
 }
 
 int					Window::getX(void) const

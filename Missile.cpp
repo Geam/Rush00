@@ -46,8 +46,10 @@ void				Missile::refresh(void)
 {
 	if (this->_speed == 0)
 	{
+		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
 		this->_moveCtrl.move();
 		this->_speed = this->_maxspeed;
+		DisplaySprite::display(this->_sp, this->_pos, 3,AGameEntity::_window);
 	}
 	else
 		this->_speed--;

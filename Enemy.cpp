@@ -39,12 +39,15 @@ Enemy &	Enemy::operator=(Enemy const & rhs)
 
 void		Enemy::refresh(void)
 {
-	--(this->_speed);
-	if (!this->_speed)
+	if (this->_speed == 0)
 	{
-		this->_speed = this->_maxspeed;
+		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
 		this->_moveCtrl.move();
+		this->_speed = this->_maxspeed;
+		DisplaySprite::display(this->_sp, this->_pos, 2,AGameEntity::_window);
 	}
+	else
+		this->_speed--;
 }
 
 void		Enemy::fireMissile(std::string pattern)

@@ -1,12 +1,13 @@
 #ifndef AGAMEENTITY_HPP
 # define AGAMEENTITY_HPP
 
-#include "Console.hpp"
-#include "Position.hpp"
-#include "Hitbox.hpp"
-#include "Sprite.hpp"
-#include <iostream>
-#include <sstream>
+# include <iostream>
+# include <sstream>
+# include "Console.hpp"
+# include "Position.hpp"
+# include "Hitbox.hpp"
+# include "Sprite.hpp"
+# include "DisplaySprite.hpp"
 
 class AGameEntity
 {
@@ -30,6 +31,7 @@ class AGameEntity
 		virtual AGameEntity		*getPrevious() const;
 		static AGameEntity		*getHead();
 		static void				pushFront(AGameEntity *alist);
+		static void				setWindow(WINDOW *window);
 		void					deleteNode();
 		std::string				toString(void) const;
 
@@ -44,6 +46,7 @@ class AGameEntity
 		int						_dead;
 		int						_index;
 		static AGameEntity		*_head;
+		static WINDOW			*_window;
 		AGameEntity( void );
 
 	private:

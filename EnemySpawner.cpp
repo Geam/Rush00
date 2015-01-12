@@ -26,8 +26,8 @@ EnemySpawner::~EnemySpawner( void )
 
 void			EnemySpawner::setWindow( Window const & win)
 {
-	this->_winwdth = win.getX();
-	this->_winhgt = win.getY();
+	this->_winwdth = win.getH();
+	this->_winhgt = win.getW();
 	return ;
 }
 

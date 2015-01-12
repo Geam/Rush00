@@ -37,15 +37,17 @@ void			Obstacle::refresh(void)
 	int			thisx;
 	int			thisy;
 
-	if (this->getSpeed() > 0)
+	if (this->_speed == 0)
 	{
-		this->_speed--;
-		return ;
+		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
+		thisx = this->_pos.getX();
+		thisy = this->_pos.getY();
+		this->_speed = this->_maxspeed;
+		this->_pos.update(--thisx, thisy);
+		DisplaySprite::display(this->_sp, this->_pos, 5,AGameEntity::_window);
 	}
-	thisx = this->_pos.getX();
-	thisy = this->_pos.getY();
-	this->_speed = this->_maxspeed;
-	this->_pos.update(--thisx, thisy);
+	else
+		this->_speed--;
 }
 
 void			Obstacle::destroy(void)

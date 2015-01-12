@@ -43,8 +43,10 @@ void			Player::refresh(void)
 {
 	if (this->_speed == 0)
 	{
+		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
 		this->_getInput();
 		this->_speed = this->_maxspeed;
+		DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
 	}
 	else
 		this->_speed--;

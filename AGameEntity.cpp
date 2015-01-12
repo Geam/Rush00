@@ -93,6 +93,11 @@ void				AGameEntity::pushFront(AGameEntity *alist)
 		save->_previous = alist;
 }
 
+void				AGameEntity::setWindow(WINDOW *window)
+{
+	AGameEntity::_window = window;
+}
+
 void				AGameEntity::deleteNode()
 {
 	if (this == AGameEntity::_head)
@@ -129,3 +134,4 @@ std::ostream &			operator<<(std::ostream & o, AGameEntity const & rhs)
 
 unsigned int	AGameEntity::_nb_inst = 0;
 AGameEntity		*AGameEntity::_head = NULL;
+WINDOW			*AGameEntity::_window = NULL;

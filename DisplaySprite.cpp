@@ -61,16 +61,16 @@ void       DisplaySprite::erase(Position p, WINDOW *window) {
 
 void       DisplaySprite::erase(Sprite s, Position p) {
     attron(COLOR_PAIR(1));
-    for (int i = 0; i < s.tempH; i++) {
-        mvprintw(p.getY() + i, p.getX(), s.tempT[i].c_str());
+    for (int i = 0; i < s.getY(); i++) {
+        mvprintw(p.getY() + i, p.getX(), s.get()[i].c_str());
     }
     attroff(COLOR_PAIR(1));
 }
 
 void       DisplaySprite::erase(Sprite s, Position p, WINDOW *window) {
     wattron(window, COLOR_PAIR(1));
-    for (int i = 0; i < s.tempH; i++) {
-        mvwprintw(window, p.getY() + i, p.getX(), s.tempT[i].c_str());
+    for (int i = 0; i < s.getY(); i++) {
+        mvwprintw(window, p.getY() + i, p.getX(), s.get()[i].c_str());
     }
     wattroff(window, COLOR_PAIR(1));
 }
@@ -91,8 +91,8 @@ void    DisplaySprite::display(int c, Position p, int color, WINDOW *window) {
 
 void       DisplaySprite::display(Sprite s, Position p, int color) {
     attron(COLOR_PAIR(color));
-    for (int i = 0; i < s.tempH; i++) {
-        mvprintw(p.getY() + i, p.getX(), s.tempT[i].c_str());
+    for (int i = 0; i < s.getY(); i++) {
+        mvprintw(p.getY() + i, p.getX(), s.get()[i].c_str());
     }
     attroff(COLOR_PAIR(color));
 }
@@ -103,13 +103,13 @@ void       DisplaySprite::display(Sprite s, Position p, int color, WINDOW *windo
     x = getmaxx(window);
     wattron(window, COLOR_PAIR(color));
     if (p.getX() <= 0) {
-        for (int i = 0; i < s.tempH; i++) {
-            mvwprintw(window, p.getY() + i, p.getX() <= 1 ? 1 : p.getX(), s.tempT[i].substr(p.getX() * -1, 30).c_str());
+        for (int i = 0; i < s.getY(); i++) {
+            mvwprintw(window, p.getY() + i, p.getX() <= 1 ? 1 : p.getX(), s.get()[i].substr(p.getX() * -1, 30).c_str());
         }
     }
     else {
-        for (int i = 0; i < s.tempH; i++) {
-            mvwprintw(window, p.getY() + i, p.getX(), s.tempT[i].substr(0, x - p.getX() - 1).c_str());
+        for (int i = 0; i < s.getY(); i++) {
+            mvwprintw(window, p.getY() + i, p.getX(), s.get()[i].substr(0, x - p.getX() - 1).c_str());
         }
     }
     wattroff(window, COLOR_PAIR(color));

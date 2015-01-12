@@ -10,7 +10,7 @@ Game::Game( void )
 Game::Game( Window const & win )
 {
 	this->_spawner.setWindow(win);
-	std::cout << "[CONSTRUCT] Game" << std::endl;
+	Console::log("[CONSTRUCT] Game", 4);
 	return ;
 }
 
@@ -89,12 +89,12 @@ void				Game::_getInput()
 
 void				Game::refresh()
 {
-	this->_getInput();
-	this->_spawner.refresh();
+//	this->_getInput();
+//	this->_spawner.refresh();
 	this->_refreshGameEntity();
-	CollisionChecker::checkCollision(*AGameEntity::getHead());
-	this->_isOver();
-	this->_deathCheck();
+//	CollisionChecker::checkCollision(*AGameEntity::getHead());
+//	this->_isOver();
+//	this->_deathCheck();
 	return ;
 }
 

@@ -1,8 +1,6 @@
-.SUFFIXES:
-
 CXX = g++
 RM = /bin/rm
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -g
 LDFLAGS = -lncurses
 
 NAME = ft_retro
