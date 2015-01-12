@@ -17,7 +17,7 @@ class Player : public ACharacter
 
 	private:
 		InputController				_controller;
-		void						_getInput();
+		bool						_getInput();
 };
 
 #endif /* PLAYER_HPP */

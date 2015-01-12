@@ -34,37 +34,46 @@ Player &		Player::operator=(Player const & rhs)
 	return *this;
 }
 
-void			Player::_getInput(void)
+bool			Player::_getInput(void)
 {
 	int			thisx;
 	int			thisy;
+	int			ch = getch();
 
 	thisx = this->_pos.getX();
-	if (InputController::getInput() == 1)
+	thisy = this->_pos.getY();
+	if (ch == KEY_UP)
 	{
-		thisy = this->_pos.getY() - 1;
+		thisy -= 1;
+		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
 		this->_pos.update(thisx, thisy);
+		DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
+		return true;
 	}
-	if (InputController::getInput() == 2)
+	if (ch == KEY_DOWN)
 	{
-		thisy = this->_pos.getY() + 1;
+		thisy += 1;
+		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
 		this->_pos.update(thisx, thisy);
+		DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
+		return true;
 	}
-	if (InputController::getInput() == 3)
+	if (ch == ' ')
+	{
 		this->fireMissile("4");
+		return true;
+	}
+	return false;
 }
 
 void			Player::refresh(void)
 {
-	if (this->_speed == 0)
+	if (this->_getInput() && this->_speed == 0)
 	{
-		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
-		this->_getInput();
 		this->_speed = this->_maxspeed;
-		DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
 	}
 	else
-		this->_speed--;
+		this->_speed = (this->_speed - 1) <= 0 ? 0 : this->_speed - 1;
 }
 
 void			Player::fireMissile(std::string pattern)

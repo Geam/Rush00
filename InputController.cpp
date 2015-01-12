@@ -1,5 +1,6 @@
 #include <ncurses.h>
 #include "InputController.hpp"
+#include <iostream>
 
 InputController::InputController(InputController const & src)
 {
@@ -19,26 +20,7 @@ InputController &	InputController::operator=(InputController const & rhs)
 
 int					InputController::getInput(void)
 {
-	int				ch;
-	int				res = -1;
-
-	ch = getch();
-	switch (ch)
-	{
-		case 27:
-			res = 0;
-			break ;
-		case ' ':
-			res = 1;
-			break ;
-		case KEY_UP:
-			res = 2;
-			break ;
-		case KEY_DOWN:
-			res = 3;
-			break ;
-	}
-	return res;
+	return -1;
 }
 
 InputController::InputController( void )

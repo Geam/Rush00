@@ -24,6 +24,7 @@ class Enemy : public virtual ACharacter
 		MoveController	_moveCtrl;
 
 	private:
+		void			_checkOutOfBound();
 		Enemy(void);
 };
 
