@@ -19,9 +19,9 @@ void			CollisionChecker::checkCollision(AGameEntity & alist1, AGameEntity & alis
 	int h2 = alist2.getHitbox().getHeight();
 
 	if (((x2 >= x1 && x2 <= x1 + w1)
-		|| (x2 >= x1 && x2 + w2 <= x1 + w1))
-		&& ((y2 >= y1 && y2 <= y1 + h1)
-		|| (y2 >= y1 && y2 + h2 <= y1 + h1)))
+		|| (x2 + w2 >= x1 && x2 + w2 <= x1 + w1))
+		&&((y2 >= y1 && y2 <= y1 + h1)
+		|| (y2 + h2 >= y1 && y2 + h2 <= y1 + h1)))
 	{
 		alist1.collidesWith(alist2);
 		alist2.collidesWith(alist1);
