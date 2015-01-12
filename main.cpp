@@ -80,6 +80,7 @@ void    setColors(void) {
 	init_pair(4, COLOR_GREEN, COLOR_BLACK);
 	init_pair(5, COLOR_CYAN, COLOR_BLACK);
 	init_pair(6, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(7, COLOR_RED, COLOR_GREEN);
 
 }
 
@@ -136,5 +137,10 @@ int					main(void)
 		fps.update();
 		itv.refresh();
 	}
+	timeout(-1);
+	do
+		i = getch();
+	while (i != 10);
+
 	switchDefaultColors(false); // TODO: Before exiting, launch this function to restore Terminal default colors
 }

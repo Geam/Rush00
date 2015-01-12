@@ -3,20 +3,20 @@
 
 MoveController::MoveController(Position & position, Pattern & pattern) : _position(&position), _pattern(&pattern)
 {
-	Console::log("[CONSTRUCTED] MoveController", 4);
+	
 	return ;
 }
 
 MoveController::MoveController(MoveController const & src)
 {
-	Console::log("[CONSTRUCTED] MoveController", 4);
+	
 	*this = src;
 	return ;
 }
 
 MoveController::~MoveController( void )
 {
-	Console::log("[DESTRUCTED] MoveController", 4);
+	
 }
 
 MoveController &	MoveController::operator=(MoveController const & rhs)

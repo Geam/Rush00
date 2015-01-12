@@ -4,14 +4,14 @@
 
 Sprite::Sprite(Sprite const & src)
 {
-	Console::log("[CONSTRUCTED] Sprite", 4);
+	
 	*this = src;
 	return ;
 }
 
 Sprite::~Sprite( void )
 {
-	Console::log("[DESTRUCTED] Sprite", 4);
+	
 	delete [] this->_sprite;
 	return ;
 }
@@ -51,7 +51,7 @@ std::string		Sprite::toString(void) const {
 
 Sprite::Sprite( void ) : _sprite(NULL), _y(0)
 {
-	Console::log("[CONSTRUCTED] Sprite", 4);
+	
 	return ;
 }
 

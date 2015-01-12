@@ -17,20 +17,20 @@ extern WINDOW *g_debug;
 
 Fps::Fps( void ) : _m_fps(0), _m_fpscount(0)
 {
-	Console::log("[CONSTRUCTED] FPS...", 4);
+	
 	return ;
 }
 
 Fps::Fps(Fps const & src)
 {
-	Console::log("[CONSTRUCTED] FPS...", 4);
+	
 	*this = src;
 	return ;
 }
 
 Fps::~Fps( void )
 {
-	Console::log("[DESTRUCTED] FPS...", 2);
+	
 	return ;
 }
 

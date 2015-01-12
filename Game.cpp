@@ -3,7 +3,7 @@
 
 Game::Game( void )
 {
-	Console::log("[CONSTRUCT] Game", 4);
+
 	return ;
 }
 
@@ -11,20 +11,20 @@ Game::Game( Window const & win ) : _status(0)
 {
 	this->_spawner.setWindow(win);
 	AGameEntity::setWindow(win);
-	Console::log("[CONSTRUCT] Game", 4);
+
 	return ;
 }
 
 Game::Game(Game const & src)
 {
-	Console::log("[CONSTRUCT] Game", 4);
+
 	*this = src;
 	return ;
 }
 
 Game::~Game( void )
 {
-	Console::log("[DESTRUCT] Game", 4);
+
 }
 
 Game &	Game::operator=(Game const & rhs)
@@ -65,7 +65,7 @@ void				Game::_isQuit()
 {
 	if (this->_player.isQuit())
 	{
-		Console::log("YOU LEFT THE GAME.", 3);
+		Console::log("YA QUIT YA BASTARD !", 2);
 		this->_status = 2;
 	}
 }
@@ -74,14 +74,7 @@ void				Game::_isOver()
 {
 	if (this->_player.isDead())
 	{
-		int			ch;
-		Console::log("YOU DIED. LOSER.", 3);
-		timeout(-1);
-		do
-		{
-			ch = getch();
-		}
-		while (ch != 10);
+		Console::log("YA LASE, NAAB !", 7);
 		this->_status = 1;
 	}
 }

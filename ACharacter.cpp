@@ -3,7 +3,7 @@
 
 ACharacter::ACharacter(int x, int y, int frate, int speed, e_type type) : AGameEntity(x, y, speed, type), _frate(frate), _maxfrate(frate)
 {
-	Console::log("[CONSTRUCTED] ACharacter", 4);
+	
 	return;
 }
 
@@ -14,7 +14,7 @@ ACharacter::ACharacter(ACharacter const & src) : AGameEntity(src)
 
 ACharacter::~ACharacter( void )
 {
-	Console::log("[DESTRUCT] ACharacter", 4);
+	
 	return;
 }
 

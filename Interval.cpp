@@ -4,20 +4,20 @@
 
 Interval::Interval( void ) : _initial(std::clock())
 {
-	Console::log("[CONSTRUCTED] Interval...", 4);
+	
 	return ;
 }
 
 Interval::Interval(Interval const & src)
 {
-	Console::log("[CONSTRUCTED] Interval...", 4);
+	
 	*this = src;
 	return ;
 }
 
 Interval::~Interval( void )
 {
-	Console::log("[DESTRUCTED] Interval...", 2);
+	
 	return ;
 }
 

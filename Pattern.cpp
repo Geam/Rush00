@@ -3,20 +3,20 @@
 
 Pattern::Pattern(std::string const & pattern) : _pattern(pattern), _current(0), _last(pattern.length())
 {
-	Console::log("[CONSTRUCTED] Pattern", 4);
+	
 	return ;
 }
 
 Pattern::Pattern(Pattern const & src)
 {
-	Console::log("[CONSTRUCTED] Pattern", 4);
+	
 	*this = src;
 	return ;
 }
 
 Pattern::~Pattern( void )
 {
-	Console::log("[DESTRUCTED] Pattern", 4);
+	
 	return ;
 }
 

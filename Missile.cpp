@@ -3,7 +3,7 @@
 
 Missile::Missile(int x, int y, int speed, std::string pattern, e_type type) : AGameEntity(x, y, speed, type)
 {
-	Console::log("=== Missile ===", 4);
+	
 	std::string *tsprite = new std::string[1];
 	tsprite[0] = "+=-";
 	this->_pattern.set(pattern);
@@ -16,7 +16,7 @@ Missile::Missile(int x, int y, int speed, std::string pattern, e_type type) : AG
 
 Missile::Missile(Position pos, int speed, std::string pattern, e_type type) : AGameEntity(pos.getX(), pos.getY(), speed, type)
 {
-	Console::log("=== Missile ===", 4);
+	
 	std::string *tsprite = new std::string[1];
 	tsprite[0] = "+=-";
 	this->_pattern.set(pattern);
@@ -29,7 +29,7 @@ Missile::Missile(Position pos, int speed, std::string pattern, e_type type) : AG
 
 Missile::Missile(Missile const & src) : AGameEntity(src)
 {
-	Console::log("Missile destruct", 2);
+	
 	*this = src;
 	return ;
 }

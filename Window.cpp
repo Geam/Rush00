@@ -38,7 +38,7 @@ Window::Window(Window const & src) : _clock(0)
 
 Window::~Window( void )
 {
-	Console::log("[DESTRUCTOR] Window", 4);
+	
 	delwin(this->_window);
 	endwin();
 }
@@ -82,6 +82,6 @@ WINDOW 				*Window::getWindow(void) const {
 
 Window::Window( void ) : _clock(0)
 {
-	Console::log("[CONSTRUCT] Window", 4);
+	
 }
 

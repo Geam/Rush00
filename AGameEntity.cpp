@@ -3,7 +3,7 @@
 AGameEntity::AGameEntity(int x, int y, int speed, e_type type) : _speed(0), _maxspeed(speed), _dead(false), _index(AGameEntity::_nb_inst++), _type(type)
 {
 	this->_pos.update(x, y);
-	Console::log("[CONSTRUCT] Game Entity", 4);
+	
 	AGameEntity::pushFront(this);
 	return ;
 }
@@ -16,7 +16,7 @@ AGameEntity::AGameEntity(void) : _speed(0), _maxspeed(0), _dead(true)
 
 AGameEntity::AGameEntity(AGameEntity const & src) : _index(AGameEntity::_nb_inst++)
 {
-	Console::log("[CONSTRUCT] Game Entity", 4);
+	
 	*this = src;
 	AGameEntity::pushFront(this);
 	return ;
@@ -24,7 +24,7 @@ AGameEntity::AGameEntity(AGameEntity const & src) : _index(AGameEntity::_nb_inst
 
 AGameEntity::~AGameEntity( void )
 {
-	Console::log("[DESTRUCT] Game Entity", 4);
+	
 	deleteNode();
 	return ;
 }

@@ -8,7 +8,7 @@ EnemySpawner::EnemySpawner( void ) : _speed(0), _maxspeed(10), _pattern(NULL)
 
 	tpattern[0] = "3";
 	this->_pattern = tpattern;
-	Console::log("[CONSTRUCT] EnemySpawner", 4);
+	
 	return ;
 }
 
@@ -20,7 +20,7 @@ EnemySpawner::EnemySpawner(EnemySpawner const & src)
 
 EnemySpawner::~EnemySpawner( void )
 {
-	Console::log("[DESTRUCT] EnemySpawner", 4);
+	
 	delete [] this->_pattern;
 }
 

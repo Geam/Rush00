@@ -8,20 +8,20 @@ Console::Console( void ) {}
 Console::Console(WINDOW * debug)
 {
 	Console::_debug = debug;
-	Console::log("[CONSTRUCTED] Console...", 4);
+
 	return ;
 }
 
 Console::Console(Console const & src)
 {
-	Console::log("[CONSTRUCTED] Console...", 4);
+
 	*this = src;
 	return ;
 }
 
 Console::~Console( void )
 {
-	Console::log("[DESTRUCTED] Console...", 4);
+
 }
 
 Console &	Console::operator=(Console const & rhs)
@@ -30,7 +30,7 @@ Console &	Console::operator=(Console const & rhs)
 	return *this;
 }
 
-void		Console::log(std::string message, int color)
+void           Console::log(std::string message, int color)
 {
 	int y, maxY, maxX;
 
