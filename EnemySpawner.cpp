@@ -47,10 +47,10 @@ Enemy const &		EnemySpawner::refresh(void)
 	if (this->_speed == 0)
 	{
 		this->_speed = this->_maxspeed;
-		if (Enemy::enemyCount < 30)
+		if (Enemy::enemyCount < 20)
 		{
 			tmp = new Enemy(this->_winwdth - 5, (std::rand() %
-			(this->_winhgt - 2)) + 1, 10, std::rand() % 2 + 1, "3");
+			(this->_winhgt - 2)) + 1, 300, std::rand() % 2 + 1, "3");
 		}
 	}
 	else

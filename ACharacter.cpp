@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ACharacter.hpp"
 
-ACharacter::ACharacter(int x, int y, int frate, int speed) : AGameEntity(x, y, speed), _frate(0), _maxfrate(frate)
+ACharacter::ACharacter(int x, int y, int frate, int speed) : AGameEntity(x, y, speed), _frate(frate), _maxfrate(frate)
 {
 	Console::log("[CONSTRUCTED] ACharacter", 4);
 	return;

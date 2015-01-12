@@ -13,7 +13,7 @@ Enemy::Enemy(int x, int y, int frate, int speed, std::string pattern) : ACharact
 	this->_hb.setWidth(3);
 	this->_hb.setHeight(2);
 	this->_sp.set(tsprite, 3);
-	this->_mslOrigin.update(this->_hb.getWidth() + 1, this->_hb.getHeight() / 2 + 1);
+	this->_mslOrigin.update(this->_hb.getWidth() - 5, this->_hb.getHeight() / 2 + 1);
 	Enemy::enemyCount++;
 	return;
 }
@@ -58,6 +58,7 @@ void		Enemy::refresh(void)
 	}
 	else
 		this->_speed--;
+	this->fireMissile("3");
 }
 
 Missile *		Enemy::fireMissile(std::string pattern)
@@ -65,10 +66,12 @@ Missile *		Enemy::fireMissile(std::string pattern)
 	Missile *	temp;
 
 	temp = NULL;
-	if (this->_frate == 0)
+	if (this->_frate <= 0)
+	{
 		temp = new Missile(this->_mslOrigin + this->_pos, 0, pattern);
-	else
-		this->_frate--;
+		this->_frate = this->_maxfrate;
+	}
+	this->_frate = (this->_frate - 1) <= 0 ? 0 : this->_frate - 1;
 	return (temp);
 }
 

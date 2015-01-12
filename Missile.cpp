@@ -61,7 +61,7 @@ void				Missile::refresh(void)
 
 void		Missile::_checkOutOfBound()
 {
-	if (this->_pos.getX() <= -1 || this->_pos.getX() >= AGameEntity::_winX)
+	if (this->_pos.getX() <= -3 || this->_pos.getX() >= AGameEntity::_winX)
 		this->_dead = true;
 }
 
