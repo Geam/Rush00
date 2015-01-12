@@ -24,6 +24,7 @@ class AGameEntity
 		Position const &		getPosition(void) const;
 		Hitbox const &			getHitbox(void) const;
 		Sprite const &			getSprite(void) const;
+		e_type					getType(void) const;
 		int						getSpeed() const;
 		int						isDead() const;
 

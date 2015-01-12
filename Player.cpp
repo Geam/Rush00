@@ -2,7 +2,7 @@
 #include "ACharacter.hpp"
 #include "Player.hpp"
 
-Player::Player() : ACharacter(5, 20, 0, 3, ALLY)
+Player::Player() : ACharacter(5, 20, 0, 3, ALLY), _quit(false), _life(3)
 {
 	std::string *tsprite = new std::string[5];
 
@@ -34,6 +34,14 @@ Player &		Player::operator=(Player const & rhs)
 	return *this;
 }
 
+void			Player::collidesWith(AGameEntity const & ge)
+{
+	if (this->_type != ge.getType())
+		this->_life--;
+	if (this->_life <= 0)
+		this->_dead = true;
+}
+
 bool			Player::_getInput(void)
 {
 	int			ch = getch();
@@ -46,6 +54,8 @@ bool			Player::_getInput(void)
 		return this->_applyInput(1, 0);
 	else if (ch == KEY_LEFT)
 		return this->_applyInput(-1, 0);
+	else if (ch == 27)
+		this->_quit = true;
 	else if (ch == ' ')
 	{
 		this->fireMissile("4");
@@ -64,6 +74,11 @@ void			Player::refresh(void)
 	else
 		this->_speed = (this->_speed - 1) <= 0 ? 0 : this->_speed - 1;
 	this->_frate = (this->_frate - 1) <= 0 ? 0 : this->_frate - 1;
+}
+
+bool				Player::isQuit(void) const
+{
+	return this->_quit;
 }
 
 Missile *			Player::fireMissile(std::string pattern)

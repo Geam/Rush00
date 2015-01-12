@@ -122,7 +122,7 @@ int					main(void)
 
 	i = 0;
 	gamew.refreshWindow();
-	while (1)
+	while (!game.getStatus())
 	{
 		buff.str(std::string());
 		buff.clear();

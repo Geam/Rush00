@@ -57,6 +57,11 @@ int						AGameEntity::getSpeed() const
 	return this->_speed;
 }
 
+e_type					AGameEntity::getType() const
+{
+	return this->_type;
+}
+
 void					AGameEntity::collidesWith(AGameEntity const & ge)
 {
 	(void)ge;

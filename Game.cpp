@@ -7,7 +7,7 @@ Game::Game( void )
 	return ;
 }
 
-Game::Game( Window const & win )
+Game::Game( Window const & win ) : _status(0)
 {
 	this->_spawner.setWindow(win);
 	AGameEntity::setWindow(win);
@@ -63,8 +63,11 @@ void				Game::_deathCheck()
 
 void				Game::_isQuit()
 {
-	std::cout << "You left the game." << std::endl;
-	exit(0);
+	if (this->_player.isQuit())
+	{
+		Console::log("YOU LEFT THE GAME.", 3);
+		this->_status = 2;
+	}
 }
 
 void				Game::_isOver()
@@ -72,31 +75,31 @@ void				Game::_isOver()
 	if (this->_player.isDead())
 	{
 		int			ch;
-		std::cout << "You died. Loser." << std::endl;
+		Console::log("YOU DIED. LOSER.", 3);
 		timeout(-1);
 		do
 		{
 			ch = getch();
 		}
 		while (ch != 10);
-		exit(0);
+		this->_status = 1;
 	}
 }
 
-void				Game::_getInput()
+char				Game::getStatus() const
 {
-	if (InputController::getInput() == 0)
-		this->_isQuit();
+	return this->_status;
 }
 
 void				Game::refresh()
 {
-	this->_getInput();
 	this->_spawner.refresh();
 	this->_refreshGameEntity();
 	CollisionChecker::checkCollision(*AGameEntity::getHead());
+	this->_isQuit();
 	this->_isOver();
-	this->_deathCheck();
+	if (!this->_status)
+		this->_deathCheck();
 	return ;
 }
 

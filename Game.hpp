@@ -14,14 +14,15 @@ class Game
 		~Game( void );
 		Game &	operator=(Game const & rhs);
 
+		char				getStatus() const;
 		void				refresh();
 
 	private:
+		char				_status;
 		void				_refreshGameEntity();
 		void				_deathCheck();
 		void				_isQuit();
 		void				_isOver();
-		void				_getInput();
 		Player				_player;
 		EnemySpawner		_spawner;
 
