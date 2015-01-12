@@ -64,6 +64,11 @@ bool			Player::_getInput(void)
 	return false;
 }
 
+int				Player::getLife() const
+{
+	return this->_life;
+}
+
 void			Player::refresh(void)
 {
 	DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);

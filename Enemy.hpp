@@ -15,6 +15,7 @@ class Enemy : public virtual ACharacter
 
 		virtual void			refresh(void);
 		virtual Missile *		fireMissile(std::string pattern);
+		virtual	void			collidesWith(AGameEntity const & ge);
 
 		static int				enemyCount;
 

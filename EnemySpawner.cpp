@@ -20,7 +20,6 @@ EnemySpawner::EnemySpawner(EnemySpawner const & src)
 
 EnemySpawner::~EnemySpawner( void )
 {
-
 	delete [] this->_pattern;
 }
 
@@ -50,7 +49,7 @@ Enemy const &		EnemySpawner::refresh(void)
 		if (Enemy::enemyCount < 20)
 		{
 			tmp = new Enemy(this->_winwdth - 5, (std::rand() %
-			(this->_winhgt - 2)) + 1, 300, std::rand() % 2 + 1, "3331333133313331333233323332");
+			(this->_winhgt - 9)) + 5, 300, std::rand() % 2 + 1, "33313331333133313332333233323332");
 		}
 	}
 	else

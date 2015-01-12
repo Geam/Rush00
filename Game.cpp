@@ -33,6 +33,27 @@ Game &	Game::operator=(Game const & rhs)
 	return *this;
 }
 
+void				Game::addScore(int i)
+{
+	Game::_score += i;
+}
+
+std::string			Game::getScore()
+{
+	std::stringstream ostr;
+
+	ostr << "Score : " << Game::_score;
+	return ostr.str();
+}
+
+std::string			Game::getLife() const
+{
+	std::stringstream ostr;
+
+	ostr << "Life : " << this->_player.getLife();
+	return ostr.str();
+}
+
 void				Game::_refreshGameEntity()
 {
 	AGameEntity		*current;
@@ -96,3 +117,4 @@ void				Game::refresh()
 	return ;
 }
 
+int			Game::_score = 0;

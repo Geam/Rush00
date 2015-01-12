@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Enemy.hpp"
+#include "Game.hpp"
 
 Enemy::Enemy(int x, int y, int frate, int speed, std::string pattern) : ACharacter(x, y, frate, speed, ENEMY)
 {
@@ -43,6 +44,14 @@ void		Enemy::_checkOutOfBound()
 {
 	if (this->_pos.getX() <= -3)
 		this->_dead = true;
+}
+
+
+void		Enemy::collidesWith(AGameEntity const & ge)
+{
+	this->AGameEntity::collidesWith(ge);
+	if (this->_dead)
+		Game::addScore(100);
 }
 
 void		Enemy::refresh(void)

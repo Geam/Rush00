@@ -16,6 +16,9 @@ class Game
 
 		char				getStatus() const;
 		void				refresh();
+		static void			addScore(int i);
+		static std::string	getScore(void);
+		std::string			getLife() const;
 
 	private:
 		char				_status;
@@ -23,9 +26,9 @@ class Game
 		void				_deathCheck();
 		void				_isQuit();
 		void				_isOver();
+		static int			_score;
 		Player				_player;
 		EnemySpawner		_spawner;
-
 };
 
 #endif /* GAME_HPP */

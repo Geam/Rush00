@@ -14,6 +14,7 @@ class Player : public ACharacter
 
 		virtual void				refresh(void);
 		bool						isQuit() const;
+		int							getLife() const;
 		virtual Missile *			fireMissile(std::string pattern);
 		void						collidesWith(AGameEntity const & ge);
 
