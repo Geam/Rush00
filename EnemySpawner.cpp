@@ -8,7 +8,7 @@ EnemySpawner::EnemySpawner( void ) : _speed(0), _maxspeed(10), _pattern(NULL)
 
 	tpattern[0] = "3";
 	this->_pattern = tpattern;
-	
+
 	return ;
 }
 
@@ -20,7 +20,7 @@ EnemySpawner::EnemySpawner(EnemySpawner const & src)
 
 EnemySpawner::~EnemySpawner( void )
 {
-	
+
 	delete [] this->_pattern;
 }
 
@@ -50,7 +50,7 @@ Enemy const &		EnemySpawner::refresh(void)
 		if (Enemy::enemyCount < 20)
 		{
 			tmp = new Enemy(this->_winwdth - 5, (std::rand() %
-			(this->_winhgt - 2)) + 1, 300, std::rand() % 2 + 1, "3");
+			(this->_winhgt - 2)) + 1, 300, std::rand() % 2 + 1, "3331333133313331333233323332");
 		}
 	}
 	else

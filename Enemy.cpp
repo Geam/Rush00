@@ -4,7 +4,7 @@
 Enemy::Enemy(int x, int y, int frate, int speed, std::string pattern) : ACharacter(x, y, frate, speed, ENEMY)
 {
 	std::string *tsprite = new std::string[3];
-	
+
 	tsprite[0] = " ./H";
 	tsprite[1] = "<HHH";
 	tsprite[2] = " .\\H";
@@ -27,7 +27,7 @@ Enemy::Enemy(Enemy const & src) : ACharacter(src)
 
 Enemy::~Enemy( void )
 {
-	
+
 	Enemy::enemyCount--;
 	return;
 }
