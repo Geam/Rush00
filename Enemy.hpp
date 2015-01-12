@@ -3,7 +3,7 @@
 # include "ACharacter.hpp"
 # include "MoveController.hpp"
 
-class Enemy : public ACharacter
+class Enemy : public virtual ACharacter
 {
 	public:
 		Enemy(int x, int y, int frate, int speed, std::string pattern);

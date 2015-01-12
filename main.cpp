@@ -125,7 +125,7 @@ int					main(void)
 	{
 		buff.str(std::string());
 		buff.clear();
-		while (itv.value() < CLOCKS_PER_SEC / 60);
+		while (itv.value() < CLOCKS_PER_SEC / 120);
 		buff << "FPS: " << fps.get();
 		DisplaySprite::display(buff.str(), Position(row - 8, 1), 2, debug.getWindow());
 		i++;

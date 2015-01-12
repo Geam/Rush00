@@ -17,8 +17,6 @@ MoveController::MoveController(MoveController const & src)
 MoveController::~MoveController( void )
 {
 	Console::log("[DESTRUCTED] MoveController", 4);
-	delete this->_position;
-	delete this->_pattern;
 }
 
 MoveController &	MoveController::operator=(MoveController const & rhs)

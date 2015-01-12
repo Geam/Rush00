@@ -26,8 +26,8 @@ EnemySpawner::~EnemySpawner( void )
 
 void			EnemySpawner::setWindow( Window const & win)
 {
-	this->_winwdth = win.getH();
-	this->_winhgt = win.getW();
+	this->_winwdth = win.getW();
+	this->_winhgt = win.getH();
 	return ;
 }
 
@@ -50,7 +50,7 @@ Enemy const &		EnemySpawner::refresh(void)
 		if (Enemy::enemyCount < 10)
 		{
 			tmp = new Enemy(this->_winwdth, (std::rand() %
-					(this->_winhgt - 2)) + 1, 10, 15, "3");
+			(this->_winhgt - 2)) + 1, 10, 2, "3");
 		}
 	}
 	else

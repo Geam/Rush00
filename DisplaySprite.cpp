@@ -104,6 +104,7 @@ void       DisplaySprite::display(Sprite const & s, Position const & p, int colo
     wattron(window, COLOR_PAIR(color));
     if (p.getX() <= 0) {
         for (int i = 0; i < s.getY(); i++) {
+			if ((p.getX() * - 1) <= (int)s.get()[i].length())
             mvwprintw(window, p.getY() + i, p.getX() <= 1 ? 1 : p.getX(), s.get()[i].substr(p.getX() * -1, 30).c_str());
         }
     }

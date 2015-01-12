@@ -24,8 +24,6 @@ class ACharacter : public AGameEntity
 		ACharacter( void );
 		int				_frate;
 		int				_maxfrate;
-		int				_speed;
-		int				_maxspeed;
 		Position		_mslOrigin;
 };
 

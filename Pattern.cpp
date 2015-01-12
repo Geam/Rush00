@@ -30,7 +30,7 @@ Pattern &	Pattern::operator=(Pattern const & rhs)
 e_direction	Pattern::next()
 {
 	e_direction drt;
-	drt = (e_direction) this->_pattern.at(this->_current++);
+	drt = (e_direction)(this->_pattern.at(this->_current++) - '0');
 	if (this->_current >= this->_last)
 		this->_current = 0;
 	return drt;
