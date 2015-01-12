@@ -93,8 +93,8 @@ void				Game::refresh()
 	this->_getInput();
 	this->_spawner.refresh();
 	this->_refreshGameEntity();
-//	CollisionChecker::checkCollision(*AGameEntity::getHead());
-//	this->_isOver();
+	CollisionChecker::checkCollision(*AGameEntity::getHead());
+	this->_isOver();
 	this->_deathCheck();
 	return ;
 }

@@ -36,7 +36,7 @@ void			CollisionChecker::checkCollision(AGameEntity & alist)
 		return ;
 	while ((current = current->getNext()))
 	{
-		CollisionChecker::checkCollision(alist, *(current->getNext()));
+		CollisionChecker::checkCollision(alist, *current);
 	}
 	CollisionChecker::checkCollision(*(alist.getNext()));
 }
