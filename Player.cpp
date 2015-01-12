@@ -2,7 +2,7 @@
 #include "ACharacter.hpp"
 #include "Player.hpp"
 
-Player::Player() : ACharacter(5, 20, 0, 3, ALLY), _quit(false), _life(3)
+Player::Player() : ACharacter(5, 20, 15, 1, ALLY), _quit(false), _life(3)
 {
 	std::string *tsprite = new std::string[5];
 	tsprite[0] = "__            ";
