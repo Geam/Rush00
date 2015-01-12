@@ -2,7 +2,7 @@
 #include "ACharacter.hpp"
 #include "Player.hpp"
 
-Player::Player() : ACharacter(5, 20, 3, 3)
+Player::Player() : ACharacter(5, 20, 0, 3)
 {
 	std::string *tsprite = new std::string[5];
 
@@ -42,6 +42,10 @@ bool			Player::_getInput(void)
 		return this->_applyInput(0, -1);
 	else if (ch == KEY_DOWN)
 		return this->_applyInput(0, 1);
+	else if (ch == KEY_RIGHT)
+		return this->_applyInput(1, 0);
+	else if (ch == KEY_LEFT)
+		return this->_applyInput(-1, 0);
 	else if (ch == ' ')
 	{
 		this->fireMissile("4");

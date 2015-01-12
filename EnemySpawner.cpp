@@ -50,7 +50,7 @@ Enemy const &		EnemySpawner::refresh(void)
 		if (Enemy::enemyCount < 30)
 		{
 			tmp = new Enemy(this->_winwdth - 5, (std::rand() %
-			(this->_winhgt - 2)) + 1, 10, 2, "3");
+			(this->_winhgt - 2)) + 1, 10, std::rand() % 2 + 1, "3");
 		}
 	}
 	else
