@@ -45,13 +45,17 @@ bool			Player::_getInput(void)
 	if (ch == KEY_UP)
 	{
 		thisy -= 1;
+		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
 		this->_pos.update(thisx, thisy);
+		DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
 		return true;
 	}
 	if (ch == KEY_DOWN)
 	{
 		thisy += 1;
+		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
 		this->_pos.update(thisx, thisy);
+		DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
 		return true;
 	}
 	if (ch == ' ')
@@ -66,9 +70,7 @@ void			Player::refresh(void)
 {
 	if (this->_getInput() && this->_speed == 0)
 	{
-		DisplaySprite::erase(this->_sp, this->_pos, AGameEntity::_window);
 		this->_speed = this->_maxspeed;
-		DisplaySprite::display(this->_sp, this->_pos, 4,AGameEntity::_window);
 	}
 	else
 		this->_speed = (this->_speed - 1) <= 0 ? 0 : this->_speed - 1;
