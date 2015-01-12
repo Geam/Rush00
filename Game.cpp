@@ -95,7 +95,7 @@ void				Game::_isOver()
 {
 	if (this->_player.isDead())
 	{
-		Console::log("YA LASE, NAAB !", 7);
+		Console::log("YA LASE, NAAB !", 6);
 		this->_status = 1;
 	}
 }
