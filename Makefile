@@ -1,4 +1,4 @@
-CXX = /usr/local/bin/g++
+CXX = /usr/bin/g++
 RM = /bin/rm
 CXXFLAGS = -Wall -Wextra -Werror
 LDFLAGS = -lncurses

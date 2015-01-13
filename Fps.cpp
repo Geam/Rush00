@@ -10,27 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "Fps.hpp"
-#include <Ncurses.h>
+#include <ncurses.h>
 #include <cstdlib>
 
 extern WINDOW *g_debug;
 
 Fps::Fps( void ) : _m_fps(0), _m_fpscount(0)
 {
-	
+
 	return ;
 }
 
 Fps::Fps(Fps const & src)
 {
-	
+
 	*this = src;
 	return ;
 }
 
 Fps::~Fps( void )
 {
-	
+
 	return ;
 }
 
